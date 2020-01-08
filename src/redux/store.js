@@ -10,7 +10,7 @@ const middleware = [thunk];
 const reducers = combineReducers({
   user: userReducer,
   UI: uiReducer,
-  data: dashboardReducer
+  dashboard: dashboardReducer
 });
 
 const composeEnhancers =

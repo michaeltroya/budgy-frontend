@@ -5,7 +5,7 @@ import axios from 'axios';
 //Component/Page Imports
 import dashboard from './pages/dashboard';
 import Login from './pages/Login';
-import register from './pages/register';
+import Register from './pages/Register';
 import AuthRoute from './util/AuthRoute';
 //Redux imports
 import { Provider } from 'react-redux';
@@ -22,7 +22,8 @@ if (token) {
     window.location.href = '/login';
   } else {
     store.dispatch({ type: SET_AUTHENTICATED });
-    axios.defaults.headers.common['Authorization'] = token;
+    axios.defaults.headers.common['Authorization'] =
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMTNiNzJmY2Q5OTQ2MGQ5ZjAyNjIyNyIsInVzZXJuYW1lIjoibWlrZSIsImlhdCI6MTU3ODM1MjM5NCwiZXhwIjoxNTgwNTA4MzIwfQ.6_qX_Gg1kMxlCz96NeLNEopX4QClc4ri7YkokB3C1IU';
     store.dispatch(getDashboard());
   }
 }
@@ -32,7 +33,7 @@ const App = () => (
     <Router>
       <Route path="/" exact component={dashboard} />
       <AuthRoute exact path="/login" component={Login} />
-      <AuthRoute exact path="/register" component={register} />
+      <AuthRoute exact path="/register" component={Register} />
     </Router>
   </Provider>
 );

@@ -18,13 +18,13 @@ export default function(state = initialState, action) {
       };
     case SET_DASHBOARD:
       return {
-        ...state,
-        post: action.payload
+        ...action.payload,
+        loading: false,
+        saving: false
       };
     case SAVE_DASHBOARD:
       return {
-        ...state,
-        posts: action.payload,
+        ...action.payload,
         loading: false,
         saving: true
       };
