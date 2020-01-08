@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-//Component Imports
+//Component/Page Imports
 import dashboard from './pages/dashboard';
 import Login from './pages/Login';
 import register from './pages/register';
+import AuthRoute from './util/AuthRoute';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -30,8 +31,8 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Route path="/" exact component={dashboard} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={register} />
+      <AuthRoute exact path="/login" component={Login} />
+      <AuthRoute exact path="/register" component={register} />
     </Router>
   </Provider>
 );
