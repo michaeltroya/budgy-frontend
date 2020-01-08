@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 //Component/Page Imports
-import dashboard from './pages/dashboard';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthRoute from './util/AuthRoute';
@@ -14,7 +14,8 @@ import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser } from './redux/actions/userActions';
 import { getDashboard } from './redux/actions/dashboardActions';
 
-const token = localStorage.FBIdToken;
+const token = localStorage.IDToken;
+
 if (token) {
   const decodeToken = jwtDecode(token);
   if (decodeToken.exp * 1000 < Date.now()) {
@@ -22,16 +23,17 @@ if (token) {
     window.location.href = '/login';
   } else {
     store.dispatch({ type: SET_AUTHENTICATED });
-    axios.defaults.headers.common['Authorization'] =
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMTNiNzJmY2Q5OTQ2MGQ5ZjAyNjIyNyIsInVzZXJuYW1lIjoibWlrZSIsImlhdCI6MTU3ODM1MjM5NCwiZXhwIjoxNTgwNTA4MzIwfQ.6_qX_Gg1kMxlCz96NeLNEopX4QClc4ri7YkokB3C1IU';
+    axios.defaults.headers.common['Authorization'] = `${token}`;
     store.dispatch(getDashboard());
   }
+} else {
+  console.log(token);
 }
 
 const App = () => (
   <Provider store={store}>
     <Router>
-      <Route path="/" exact component={dashboard} />
+      <Route path="/" exact component={Dashboard} />
       <AuthRoute exact path="/login" component={Login} />
       <AuthRoute exact path="/register" component={Register} />
     </Router>

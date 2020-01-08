@@ -1,8 +1,7 @@
 import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from '../types';
 
 const initialState = {
-  authenticated: false,
-  credentials: {}
+  authenticated: false
 };
 
 export default function(state = initialState, action) {
