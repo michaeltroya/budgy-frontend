@@ -1,26 +1,21 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+//Redux Imports
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux/actions/userActions';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
-
     const loginData = {
       email,
       password
     };
-
-    axios
-      .post('/auth/login', loginData)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err.response.data));
-
-    console.log(loginData);
+    dispatch(loginUser(loginData));
   };
 
   return (

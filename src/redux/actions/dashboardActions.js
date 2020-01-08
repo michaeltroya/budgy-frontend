@@ -1,4 +1,4 @@
-import { SET_DASHBOARD, LOADING_DASHBOARD, SAVE_DASHBOARD, CLEAR_ERRORS } from '../types';
+import { SET_DASHBOARD, LOADING_DASHBOARD, CLEAR_ERRORS } from '../types';
 import axios from 'axios';
 
 export const getDashboard = () => dispatch => {

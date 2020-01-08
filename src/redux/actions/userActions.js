@@ -1,16 +1,16 @@
-import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED } from '../types';
+import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, SET_AUTHENTICATED } from '../types';
 import axios from 'axios';
 
-export const loginUser = (userData, history) => dispatch => {
-  dispatch({ type: LOADING_UI });
+export const loginUser = userData => dispatch => {
   axios
     .post('/auth/login', userData)
     .then(res => {
+      console.log(res.data);
       setAuthHeader(res.data.token);
-      dispatch({ type: CLEAR_ERRORS });
-      history.push('/');
+      dispatch({ type: SET_AUTHENTICATED });
     })
     .catch(err => {
+      console.log(err.response.data);
       dispatch({ type: SET_ERRORS, payload: err.response.data });
     });
 };
