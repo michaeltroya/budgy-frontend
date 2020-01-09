@@ -6,7 +6,6 @@ export const getDashboard = () => dispatch => {
   axios
     .get('/dashboard/')
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: SET_DASHBOARD,
         payload: res.data

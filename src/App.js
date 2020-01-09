@@ -26,8 +26,6 @@ if (token) {
     axios.defaults.headers.common['Authorization'] = `${token}`;
     store.dispatch(getDashboard());
   }
-} else {
-  console.log(token);
 }
 
 const App = () => (

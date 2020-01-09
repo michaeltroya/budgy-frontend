@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 //Redux Imports
-import { useSelector, useDispatch } from 'react-redux';
-import { getDashboard } from '../redux/actions/dashboardActions';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
+  const dashboard = useSelector(state => state.dashboard);
 
   const handleClick = () => {
-    dispatch(getDashboard());
+    console.log(dashboard);
   };
 
-  return <button onClick={handleClick}>CLick</button>;
+  return (
+    <Fragment>
+      <h1>{dashboard.username}</h1>
+      {dashboard.people.map(p => (
+        <p key={Math.random(1)}>{p.name}</p>
+      ))}
+
+      <button onClick={handleClick}>CLick</button>
+    </Fragment>
+  );
 };
 
 export default Dashboard;
