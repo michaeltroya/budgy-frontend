@@ -6,20 +6,10 @@ import { useSelector } from 'react-redux';
 const AuthRoute = ({ component: Component, ...rest }) => {
   const authenticated = useSelector(state => state.user.authenticated);
 
-  console.log(rest.path);
-
   return (
     <Route
       {...rest}
-      render={props =>
-        authenticated === false && rest.path === '/dashboard' ? (
-          <Redirect to="/" />
-        ) : authenticated === true ? (
-          <Redirect to="/dashboard" />
-        ) : (
-          <Component {...props} />
-        )
-      }
+      render={props => (authenticated === false ? <Redirect to="/" /> : <Component {...props} />)}
     />
   );
 };
