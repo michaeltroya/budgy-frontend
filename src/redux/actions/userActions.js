@@ -1,12 +1,12 @@
 import { SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED, SET_AUTHENTICATED, CLEAR_DASHBOARD } from '../types';
 import axios from 'axios';
-import { getDashboard, setNewDashboard } from './dashboardActions';
+import { getDashboard } from './dashboardActions';
 
 export const loginUser = userData => dispatch => {
   axios
     .post('/auth/login', userData)
     .then(res => {
-      setAuthHeader(res.data.token, res.data.username);
+      setAuthHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
       dispatch(getDashboard());
@@ -20,9 +20,10 @@ export const registerUser = userData => dispatch => {
   axios
     .post('/auth/register', userData)
     .then(res => {
-      setAuthHeader(res.data.token, res.data.username);
+      setAuthHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
+      dispatch(getDashboard());
     })
     .catch(err => {
       console.log(err.response.data);

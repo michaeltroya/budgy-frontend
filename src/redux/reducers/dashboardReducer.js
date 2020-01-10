@@ -1,10 +1,4 @@
-import {
-  SET_DASHBOARD,
-  SET_NEW_DASHBOARD,
-  LOADING_DASHBOARD,
-  SAVE_DASHBOARD,
-  CLEAR_DASHBOARD
-} from '../types';
+import { SET_DASHBOARD, LOADING_DASHBOARD, SAVE_DASHBOARD, CLEAR_DASHBOARD } from '../types';
 
 const initialState = {
   totalBudget: 0,
@@ -21,10 +15,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
-      };
-    case SET_NEW_DASHBOARD:
-      return {
-        ...state
       };
     case SET_DASHBOARD:
       return {
