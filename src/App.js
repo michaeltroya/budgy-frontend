@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 //Component/Page Imports
@@ -8,7 +8,6 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthRoute from './util/AuthRoute';
-import PrivateRoute from './util/PrivateRoute';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
