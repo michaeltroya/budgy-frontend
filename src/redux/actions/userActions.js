@@ -38,9 +38,8 @@ export const logoutUser = () => dispatch => {
   dispatch({ type: CLEAR_DASHBOARD });
 };
 
-const setAuthHeader = (token, username) => {
+const setAuthHeader = token => {
   const IDToken = `Bearer ${token}`;
   localStorage.setItem('IDToken', IDToken);
-  localStorage.setItem('username', username);
   axios.defaults.headers.common['Authorization'] = IDToken;
 };
