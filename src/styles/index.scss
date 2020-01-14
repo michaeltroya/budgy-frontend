@@ -18,5 +18,8 @@ $darker-color: #0a0a0a;
 @import './reset';
 @import '../components/layout/Navbar/navbar';
 
+//PAGES
+@import '../pages/Home/homepage';
+
 //MEDIA QUERIES
 @import './responsive';
