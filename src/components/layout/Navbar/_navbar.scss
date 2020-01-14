@@ -12,8 +12,13 @@
   display: flex;
   align-items: center;
 }
+
 .navbar-button-container {
   justify-content: flex-end;
+}
+
+.navbar-logo-center {
+  justify-content: center !important;
 }
 
 .navbar-logo {

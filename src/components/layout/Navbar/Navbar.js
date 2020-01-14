@@ -7,10 +7,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import logo from '../../../images/dark-logo.png';
 
 const Navbar = ({ page }) => {
-  if (page === 'home') {
-    return (
-      <div className="navbar">
-        <Container fluid>
+  return (
+    <div className="navbar">
+      <Container fluid>
+        {page === 'home' ? (
           <Row>
             <Col className="navbar-logo-container" xs={5}>
               <Link to="/">
@@ -26,24 +26,26 @@ const Navbar = ({ page }) => {
               </Link>
             </Col>
           </Row>
-        </Container>
-      </div>
-    );
-  } else if (page === 'forms') {
-    return (
-      <div className="navbar">
-        <Container fluid>
+        ) : page === 'forms' ? (
           <Row>
-            <Col className="navbar-logo-container" xs={12}>
+            <Col className="navbar-logo-container navbar-logo-center" xs={12}>
               <Link to="/">
                 <img src={logo} className="navbar-logo" alt="budgy" />
               </Link>
             </Col>
           </Row>
-        </Container>
-      </div>
-    );
-  }
+        ) : (
+          <Row>
+            <Col className="navbar-logo-container navbar-logo-center" xs={12}>
+              <Link to="/">
+                <img src={logo} className="navbar-logo" alt="budgy" />
+              </Link>
+            </Col>
+          </Row>
+        )}
+      </Container>
+    </div>
+  );
 };
 
 export default Navbar;

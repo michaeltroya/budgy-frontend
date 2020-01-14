@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Navbar from '../../components/layout/Navbar/Navbar';
 //Redux Imports
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/actions/userActions';
@@ -13,6 +14,7 @@ const Dashboard = () => {
 
   return (
     <Fragment>
+      <Navbar page="dash" />
       {dashboard.loading === true ? (
         <h1>loading ...</h1>
       ) : (
