@@ -1,1 +1,34 @@
+@include media-breakpoint-up(sm) {
+  .navbar {
+    background-color: red;
+  }
 
+  .homepage-about {
+    text-align: center;
+    color: $white-color;
+    h1 {
+      font-size: 2.9rem;
+      line-height: 3.2rem;
+    }
+    p {
+      padding: 0 1rem;
+      font-size: 1rem;
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  .navbar {
+    background-color: green;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .navbar {
+    background-color: blue;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .navbar {
+    background-color: pink;
+  }
+}

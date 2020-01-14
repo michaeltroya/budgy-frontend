@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../../components/layout/Navbar/Navbar';
 //Redux Imports
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/actions/userActions';
@@ -24,6 +25,7 @@ const Register = () => {
 
   return (
     <div>
+      <Navbar page="forms" />
       <form onSubmit={handleSubmit}>
         <input
           type="text"

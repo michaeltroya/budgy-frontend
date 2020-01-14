@@ -1,21 +1,23 @@
 .homepage-section {
   margin-top: -67px;
-  padding: 5rem 0;
   background: $gradient-color;
   height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .homepage-about {
-  padding: 2rem 0;
   text-align: center;
   color: $white-color;
+  margin-bottom: 1rem;
   h1 {
-    font-size: 2.2rem;
-    line-height: 3.2rem;
+    font-size: 2.1rem;
+    line-height: 2.2rem;
+    font-weight: bold;
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 

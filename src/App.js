@@ -8,7 +8,6 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthRoute from './util/AuthRoute';
-import Navbar from './components/layout/Navbar/Navbar';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -30,16 +29,17 @@ if (token) {
   }
 }
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
-      <Navbar />
-      <AuthRoute exact path="/" component={Home} />
-      <AuthRoute exact path="/dashboard" component={Dashboard} />
-      <AuthRoute exact path="/login" component={Login} />
-      <AuthRoute exact path="/register" component={Register} />
-    </Router>
-  </Provider>
-);
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <AuthRoute exact path="/" component={Home} />
+        <AuthRoute path="/dashboard" component={Dashboard} />
+        <AuthRoute path="/login" component={Login} />
+        <AuthRoute path="/register" component={Register} />
+      </Router>
+    </Provider>
+  );
+};
 
 export default App;

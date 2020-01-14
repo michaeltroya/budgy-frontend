@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../../components/layout/Navbar/Navbar';
 //Redux Imports
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/actions/userActions';
@@ -20,6 +21,7 @@ const Login = () => {
 
   return (
     <div>
+      <Navbar page="forms" />
       <form onSubmit={handleSubmit}>
         email:
         <input type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} />
