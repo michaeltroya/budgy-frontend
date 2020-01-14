@@ -1,3 +1,35 @@
-.home-section {
+.homepage-section {
+  margin-top: -67px;
+  padding: 5rem 0;
+  background: $gradient-color;
+  height: 100%;
+  width: 100%;
+}
+
+.homepage-about {
   padding: 2rem 0;
+  text-align: center;
+  color: $white-color;
+  h1 {
+    font-size: 2.2rem;
+    line-height: 3.2rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.homepage-getstarted-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homepage-login-button {
+  margin-top: 0.7rem;
+  text-align: center;
+  a {
+    color: $white;
+  }
 }

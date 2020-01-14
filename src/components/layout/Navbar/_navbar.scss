@@ -2,16 +2,25 @@
   width: 100%;
   padding: 1rem 0;
   background: rgb(0, 198, 255);
-  background: linear-gradient(90deg, rgba(0, 198, 255, 1) 0%, rgba(0, 114, 255, 1) 100%);
+  background: $white-color;
+  position: relative;
+  z-index: 10;
 }
 
 .navbar-logo-container,
 .navbar-button-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+.navbar-button-container {
+  justify-content: flex-end;
 }
 
 .navbar-logo {
-  height: 2.2rem;
+  height: 2rem;
+}
+
+.navbar-login-button {
+  font-size: 0.8rem;
+  margin-right: 1rem;
 }

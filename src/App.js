@@ -9,8 +9,6 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AuthRoute from './util/AuthRoute';
 import Navbar from './components/layout/Navbar/Navbar';
-//BS imports
-import { Container } from 'react-bootstrap';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -36,12 +34,10 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Navbar />
-      <Container>
-        <AuthRoute exact path="/" component={Home} />
-        <AuthRoute exact path="/dashboard" component={Dashboard} />
-        <AuthRoute exact path="/login" component={Login} />
-        <AuthRoute exact path="/register" component={Register} />
-      </Container>
+      <AuthRoute exact path="/" component={Home} />
+      <AuthRoute exact path="/dashboard" component={Dashboard} />
+      <AuthRoute exact path="/login" component={Login} />
+      <AuthRoute exact path="/register" component={Register} />
     </Router>
   </Provider>
 );
