@@ -7,6 +7,10 @@
     top: 80%;
     fill: white;
   }
+
+  h4 {
+    text-align: center;
+  }
 }
 
 .bubble {
@@ -21,7 +25,7 @@
 
 .form-container {
   background-color: transparent;
-  padding: 2rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -43,5 +47,14 @@
 
   button {
     margin-top: 1rem;
+  }
+}
+
+.form-errors {
+  text-align: center;
+  color: red;
+  font-size: 0.8rem;
+  p {
+    margin: 0;
   }
 }

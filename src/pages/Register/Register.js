@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import Navbar from '../../components/layout/Navbar/Navbar';
 //Redux Imports
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../redux/actions/userActions';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -10,6 +10,8 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const errors = useSelector(state => state.UI.errors);
 
   const dispatch = useDispatch();
 
@@ -31,8 +33,16 @@ const Register = () => {
         <Container>
           <Row>
             <Col>
+              <h4>Sign up for Budgy</h4>
               <form className="form-container" onSubmit={handleSubmit}>
-                <h5>Sign up for Budgy</h5>
+                {errors ? (
+                  <div className="form-errors">
+                    <p>{errors.username}</p>
+                    <p>{errors.email}</p>
+                    <p>{errors.password}</p>
+                  </div>
+                ) : null}
+
                 <input
                   type="text"
                   id="username"
@@ -69,7 +79,7 @@ const Register = () => {
                   onChange={e => setConfirmPassword(e.target.value)}
                 />
                 <button type="submit" className="btn btn-gradient">
-                  submit
+                  sign up
                 </button>
               </form>
             </Col>

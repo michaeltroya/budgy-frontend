@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import Navbar from '../../components/layout/Navbar/Navbar';
 //Redux Imports
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actions/userActions';
 //bs imports
 
@@ -9,6 +9,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const errors = useSelector(state => state.UI.errors);
 
   const dispatch = useDispatch();
 
@@ -28,8 +30,15 @@ const Login = () => {
         <Container>
           <Row>
             <Col>
+              <h4>Log in to Budgy</h4>
               <form className="form-container" onSubmit={handleSubmit}>
-                <h5>Log in to Budgy</h5>
+                {errors ? (
+                  <div className="form-errors">
+                    <p>{errors.general}</p>
+                    <p>{errors.email}</p>
+                    <p>{errors.password}</p>
+                  </div>
+                ) : null}
                 <input
                   placeholder="email"
                   type="text"
@@ -48,7 +57,7 @@ const Login = () => {
                   onChange={e => setPassword(e.target.value)}
                 />
                 <button type="submit" className="btn btn-gradient">
-                  submit
+                  Log in
                 </button>
               </form>
             </Col>
