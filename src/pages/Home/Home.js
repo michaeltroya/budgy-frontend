@@ -8,7 +8,7 @@ const Home = () => {
     <Fragment>
       <Navbar page="home" />
       <div className="fullpage home-page">
-        <Container>
+        <Container className="home-container">
           <Row className="homepage-about">
             <Col xs={12}>
               <h1>Christmas budgeting done the easy way</h1>

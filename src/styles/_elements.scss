@@ -21,6 +21,10 @@ a {
   }
 }
 
+.container {
+  z-index: 1;
+}
+
 // FOR FULL PAGES
 
 .fullpage {
@@ -53,42 +57,13 @@ a {
 
 .btn-gradient {
   color: $white-color;
-  background-image: $gradient-color;
+  background: linear-gradient(243deg, #008cff 8%, #00ecbc 100%);
 }
 
 .btn-white {
-  color: $main-color;
+  color: $dark-color;
   background-color: $white-color;
   &:hover {
     color: $main-color;
-  }
-}
-
-//REGISTER AND LOGIN PAGE COMMON STYLES
-
-.form-container {
-  background-color: $white-color;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  border-radius: 30px;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-
-  input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    background-color: #e6e6e6;
-    border-radius: 100px;
-    border: none;
-    &:focus {
-      outline: none;
-    }
-  }
-
-  button {
-    margin-top: 1rem;
   }
 }

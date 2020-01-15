@@ -1,0 +1,47 @@
+.forms-page {
+  margin-top: -64px;
+  background: $gradient-color;
+
+  svg {
+    position: absolute;
+    top: 80%;
+    fill: white;
+  }
+}
+
+.bubble {
+  height: 80%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: $white-color;
+}
+
+//REGISTER AND LOGIN PAGE COMMON STYLES
+
+.form-container {
+  background-color: transparent;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    background-color: #f5f5f5;
+    border-radius: 100px;
+    color: $dark-color;
+    border: none;
+    &:focus {
+      outline: none;
+      border: solid 1px #00192f54;
+    }
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+}
