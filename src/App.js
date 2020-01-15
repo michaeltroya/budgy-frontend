@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 //Component/Page Imports
@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import FourOhFour from './pages/404/FourOhFour';
 import AuthRoute from './util/AuthRoute';
 //Redux imports
 import { Provider } from 'react-redux';
@@ -33,10 +34,13 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <AuthRoute exact path="/" component={Home} />
-        <AuthRoute path="/dashboard" component={Dashboard} />
-        <AuthRoute path="/login" component={Login} />
-        <AuthRoute path="/register" component={Register} />
+        <Switch>
+          <AuthRoute exact path="/" component={Home} />
+          <AuthRoute path="/dashboard" component={Dashboard} />
+          <AuthRoute path="/login" component={Login} />
+          <AuthRoute path="/register" component={Register} />
+          <Route component={FourOhFour} />
+        </Switch>
       </Router>
     </Provider>
   );

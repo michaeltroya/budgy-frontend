@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <Fragment>
       <Navbar page="home" />
-      <section className="homepage-section">
+      <div className="fullpage home-page">
         <Container>
           <Row className="homepage-about">
             <Col xs={12}>
@@ -28,7 +28,7 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </div>
     </Fragment>
   );
 };

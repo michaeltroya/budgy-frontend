@@ -1,6 +1,6 @@
 //COLORS
 $main-color: rgba(0, 198, 255, 1);
-$gradient-color: linear-gradient(90deg, rgba(0, 198, 255, 1) 0%, rgba(0, 114, 255, 1) 100%);
+$gradient-color: linear-gradient(162deg, rgba(0, 198, 255, 1) 0%, rgba(0, 114, 255, 1) 100%);
 $white-color: #fff;
 $dark-color: #181818;
 $darker-color: #0a0a0a;
@@ -20,6 +20,7 @@ $darker-color: #0a0a0a;
 
 //PAGES
 @import '../pages/Home/homepage';
+@import '../pages/Register/registerpage';
 
 //MEDIA QUERIES
 @import './responsive';

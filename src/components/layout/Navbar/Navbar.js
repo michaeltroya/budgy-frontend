@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 // Bootstrap imports
 import { Container, Row, Col } from 'react-bootstrap';
 //img imports
-import logo from '../../../images/dark-logo.png';
+import logo from '../../../images/logo.png';
 
 const Navbar = ({ page }) => {
   return (
