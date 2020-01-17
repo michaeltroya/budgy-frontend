@@ -1,32 +1,37 @@
 import React, { Fragment } from 'react';
+//component imports
 import Navbar from '../../components/layout/Navbar/Navbar';
+import People from '../../components/dashboard/People/People';
 //Redux Imports
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/actions/userActions';
+import { useSelector } from 'react-redux';
+//BS imports
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Dashboard = () => {
   const dashboard = useSelector(state => state.dashboard);
-  const dispatch = useDispatch();
-
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
 
   return (
     <Fragment>
       <Navbar page="dash" />
-      {dashboard.loading === true ? (
-        <h1>loading ...</h1>
-      ) : (
-        <div>
-          <h1>{`hello ${dashboard.username}`}</h1>
-          <h4>{`TOTAL BUDGET: ${dashboard.totalBudget}`}</h4>
-          <h4>{`TOTAL SPENT: ${dashboard.totalSpent}`}</h4>
-          <h4>{`TOTAL REMAINING: ${dashboard.totalRemaining}`}</h4>
+      <Container>
+        <div className="dashboard">
+          {dashboard.loading === true ? (
+            <h1>loading ...</h1>
+          ) : (
+            <div>
+              <Row>
+                {dashboard.people.map(person => {
+                  return (
+                    <Col xs={6}>
+                      <People person={person} />
+                    </Col>
+                  );
+                })}
+              </Row>
+            </div>
+          )}
         </div>
-      )}
-
-      <button onClick={handleLogout}>log out</button>
+      </Container>
     </Fragment>
   );
 };

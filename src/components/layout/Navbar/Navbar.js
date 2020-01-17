@@ -5,8 +5,17 @@ import { Container, Row, Col } from 'react-bootstrap';
 //img imports
 import WhiteLogo from '../../../images/white-logo.png';
 import MainLogo from '../../../images/main-logo.png';
+//redux imports
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../../../redux/actions/userActions';
 
 const Navbar = ({ page }) => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
   return (
     <div className="navbar">
       <Container fluid>
@@ -36,9 +45,14 @@ const Navbar = ({ page }) => {
           </Row>
         ) : (
           <Row>
-            <Col className="navbar-logo-container navbar-logo-center" xs={12}>
+            <Col className="navbar-logo-container" xs={6}>
               <Link to="/">
                 <img src={MainLogo} className="navbar-logo" alt="budgy" />
+              </Link>
+            </Col>
+            <Col className="navbar-button-container" xs={6}>
+              <Link to="/register" className="btn btn-gradient" onClick={handleLogout}>
+                Logout
               </Link>
             </Col>
           </Row>
