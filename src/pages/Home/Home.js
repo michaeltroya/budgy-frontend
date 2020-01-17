@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <Fragment>
       <Navbar page="home" />
-      <div className="fullpage home-page">
+      <div className="home-page">
         <Container>
           <Row className="homepage-about">
             <Col xs={12}>
@@ -20,12 +20,12 @@ const Home = () => {
                   Get Started
                 </Link>
               </div>
-            </Col>
-            <Col xs={12}>
               <p className="homepage-login-button">
                 <span className="question">
                   Already have an account? <br />
-                  <Link to="/login">Login</Link>
+                  <Link to="/login" className="home-login">
+                    Login
+                  </Link>
                 </span>
               </p>
             </Col>

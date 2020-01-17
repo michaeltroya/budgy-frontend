@@ -1,25 +1,88 @@
 @include media-breakpoint-up(sm) {
-  .navbar {
-    background-color: red;
+  //BTN
+  .btn {
+    font-size: 1rem;
+  }
+
+  //NAVBAR
+  .navbar-logo {
+    height: 2.3rem;
+  }
+
+  .navbar-login-button {
+    font-size: 1rem;
+  }
+
+  //HOMEPAGE
+  .homepage-about {
+    h1 {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .homepage-getstarted-button {
+    width: 50%;
+  }
+
+  .question {
+    font-size: 1.2rem;
   }
 }
 @include media-breakpoint-up(md) {
-  .navbar {
-    background-color: green;
-  }
 }
 @include media-breakpoint-up(lg) {
-  .navbar {
-    background-color: blue;
+  //HOMEPAGE
+  .homepage-about {
+    h1 {
+      font-size: 3.8rem;
+      line-height: 3.8rem;
+    }
+    p {
+      font-size: 1.7rem;
+    }
+  }
+
+  //FORMS
+  .form-container {
+    h5 {
+      font-size: 1.2rem;
+      margin-top: -5rem 0 3rem 0;
+    }
+    .form-errors {
+      font-size: 1rem;
+    }
+  }
+
+  .form {
+    padding: 0 6rem;
+    input {
+      margin: 1rem 0;
+    }
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .navbar {
-    background-color: pink;
+  //NAVBAR
+  .navbar-logo {
+    height: 2.5rem;
   }
 
-  .forms-page {
-    margin-top: -80px;
+  //HOMEPAGE
+  .homepage-about {
+    h1 {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+    p {
+      font-size: 1.8rem;
+    }
+  }
+
+  .homepage-getstarted-button {
+    width: 40%;
   }
 }

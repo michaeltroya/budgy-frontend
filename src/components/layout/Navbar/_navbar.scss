@@ -5,6 +5,8 @@
   position: relative;
   top: 0;
   z-index: 10;
+  height: 78px;
+  max-height: 78px;
   min-height: 78px;
   display: flex;
   justify-content: center;
@@ -33,4 +35,8 @@
   font-size: 0.8rem;
   margin-right: 1rem;
   color: $white-color;
+  transition: 0.5s;
+  &:hover {
+    color: $dark-color;
+  }
 }

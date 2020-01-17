@@ -1,21 +1,19 @@
 .forms-page {
   background: $white-color;
   min-height: 100%;
-  margin-top: -79px;
+  height: 100%;
+  margin-top: -78px;
   z-index: 1;
   position: relative;
+}
 
-  svg {
-    position: absolute;
-    bottom: 0;
-    fill: #00192f;
-    margin: 0;
-    padding: 0;
-  }
-
-  h4 {
-    text-align: center;
-  }
+svg {
+  position: absolute;
+  bottom: 0;
+  fill: #00192f;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
 }
 
 .bubble {
@@ -26,14 +24,20 @@
   background-color: $white-color;
 }
 
+.form-errors {
+  padding: 0.5rem 0 1rem 0;
+}
+
 //REGISTER AND LOGIN PAGE COMMON STYLES
 
 .form-container {
+  height: 100%;
   min-height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 }
 
 .form {
@@ -44,6 +48,8 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  z-index: 100;
+  flex-wrap: wrap;
 
   input {
     width: 100%;
