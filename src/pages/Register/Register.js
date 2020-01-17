@@ -3,7 +3,6 @@ import Navbar from '../../components/layout/Navbar/Navbar';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../redux/actions/userActions';
-import { Container, Row, Col } from 'react-bootstrap';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -31,6 +30,7 @@ const Register = () => {
       <Navbar page="forms" />
       <div className="forms-page">
         <div className="form-container">
+          <h5>Register for Budgy</h5>
           <form className="form" onSubmit={handleSubmit}>
             {errors ? (
               <div className="form-errors">

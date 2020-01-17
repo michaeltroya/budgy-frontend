@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actions/userActions';
 //bs imports
 
-import { Container, Row, Col } from 'react-bootstrap';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,6 +27,7 @@ const Login = () => {
       <Navbar page="forms" />
       <div className="forms-page">
         <div className="form-container">
+          <h5>Log in to Budgy</h5>
           <form className="form" onSubmit={handleSubmit}>
             {errors ? (
               <div className="form-errors">

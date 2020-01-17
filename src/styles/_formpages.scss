@@ -1,11 +1,7 @@
 .forms-page {
   background: $white-color;
-
   min-height: 100%;
-  margin-top: -78px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: -79px;
   z-index: 1;
   position: relative;
 
@@ -13,6 +9,8 @@
     position: absolute;
     bottom: 0;
     fill: #00192f;
+    margin: 0;
+    padding: 0;
   }
 
   h4 {
@@ -31,13 +29,17 @@
 //REGISTER AND LOGIN PAGE COMMON STYLES
 
 .form-container {
-  height: 100%;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .form {
   position: relative;
   background-color: transparent;
-  padding: 4rem 3rem;
+  padding: 0 3rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
