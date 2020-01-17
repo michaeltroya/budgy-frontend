@@ -29,67 +29,61 @@ const Register = () => {
   return (
     <Fragment>
       <Navbar page="forms" />
-      <div className="fullpage forms-page">
-        <Container>
-          <Row>
-            <Col>
-              <h4>Sign up for Budgy</h4>
-              <form className="form-container" onSubmit={handleSubmit}>
-                {errors ? (
-                  <div className="form-errors">
-                    <p>{errors.username}</p>
-                    <p>{errors.email}</p>
-                    <p>{errors.password}</p>
-                  </div>
-                ) : null}
+      <div className="forms-page">
+        <div className="form-container">
+          <form className="form" onSubmit={handleSubmit}>
+            {errors ? (
+              <div className="form-errors">
+                <p>{errors.username}</p>
+                <p>{errors.email}</p>
+                <p>{errors.password}</p>
+              </div>
+            ) : null}
 
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={username}
-                  placeholder="username"
-                  onChange={e => setUsername(e.target.value)}
-                />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              placeholder="username"
+              onChange={e => setUsername(e.target.value)}
+            />
 
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  value={email}
-                  placeholder="email"
-                  onChange={e => setEmail(e.target.value)}
-                />
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="email"
+              onChange={e => setEmail(e.target.value)}
+            />
 
-                <input
-                  type="text"
-                  id="password"
-                  name="password"
-                  value={password}
-                  placeholder="password"
-                  onChange={e => setPassword(e.target.value)}
-                />
+            <input
+              type="text"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="password"
+              onChange={e => setPassword(e.target.value)}
+            />
 
-                <input
-                  type="text"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={confirmPassword}
-                  placeholder="confirm password"
-                  onChange={e => setConfirmPassword(e.target.value)}
-                />
-                <button type="submit" className="btn btn-gradient">
-                  sign up
-                </button>
-              </form>
-            </Col>
-          </Row>
-        </Container>
+            <input
+              type="text"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={confirmPassword}
+              placeholder="confirm password"
+              onChange={e => setConfirmPassword(e.target.value)}
+            />
+            <button type="submit" className="btn btn-gradient">
+              sign up
+            </button>
+          </form>
+        </div>
+
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path d="M0,224L120,234.7C240,245,480,267,720,266.7C960,267,1200,245,1320,234.7L1440,224L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+          <path d="M0,192L120,208C240,224,480,256,720,250.7C960,245,1200,203,1320,181.3L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
         </svg>
-
-        <div className="bubble"></div>
       </div>
     </Fragment>
   );

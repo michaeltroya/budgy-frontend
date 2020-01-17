@@ -1,10 +1,18 @@
 .forms-page {
-  background: $gradient-color;
+  background: $white-color;
+
+  min-height: 100%;
+  margin-top: -78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
 
   svg {
     position: absolute;
-    top: 80%;
-    fill: white;
+    bottom: 0;
+    fill: #00192f;
   }
 
   h4 {
@@ -23,8 +31,13 @@
 //REGISTER AND LOGIN PAGE COMMON STYLES
 
 .form-container {
+  height: 100%;
+}
+
+.form {
+  position: relative;
   background-color: transparent;
-  padding: 0 2rem;
+  padding: 4rem 3rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -32,8 +45,8 @@
 
   input {
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
     background-color: #f5f5f5;
     border-radius: 100px;
     color: $dark-color;

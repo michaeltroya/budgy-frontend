@@ -1,5 +1,12 @@
 .home-page {
+  height: 100%;
+  margin-top: -78px;
   background: $gradient-color;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .homepage-about {
@@ -28,7 +35,10 @@
   text-align: center;
   color: $white-color;
 
-  a {
-    color: $dark-color;
+  .question {
+    font-size: 0.9rem;
+    a {
+      color: $dark-color;
+    }
   }
 }

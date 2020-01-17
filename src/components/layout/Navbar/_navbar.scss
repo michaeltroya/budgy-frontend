@@ -1,10 +1,14 @@
 .navbar {
   width: 100%;
-  padding: 1.3rem 0;
   background: rgb(0, 198, 255);
   background: transparent;
-  position: absolute;
+  position: relative;
+  top: 0;
   z-index: 10;
+  min-height: 78px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-logo-container,

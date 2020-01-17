@@ -23,7 +23,10 @@ const Home = () => {
             </Col>
             <Col xs={12}>
               <p className="homepage-login-button">
-                Already have an account? <br /> <Link to="/login">Login</Link>
+                <span className="question">
+                  Already have an account? <br />
+                  <Link to="/login">Login</Link>
+                </span>
               </p>
             </Col>
           </Row>
