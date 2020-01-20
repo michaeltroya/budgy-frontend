@@ -1,0 +1,60 @@
+.people-wrapper {
+  width: 200px;
+  margin-right: 0.8rem;
+  height: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.people-card {
+  background-color: $white-color;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  white-space: normal;
+  align-items: center;
+}
+
+.card-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  border-bottom: 1px solid #ececec;
+  h3 {
+    margin: 0;
+    text-transform: capitalize;
+  }
+}
+
+.card-footer {
+  padding: 0.7rem 2rem;
+}
+
+.card-content {
+  width: 100%;
+  display: flex;
+  padding: 0.7rem 2rem;
+  flex-direction: column;
+}
+
+.card-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h4,
+  p {
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  p {
+    &::before {
+      content: '$';
+    }
+  }
+}

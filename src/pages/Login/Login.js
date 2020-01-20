@@ -16,9 +16,10 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const loginData = {
-      email,
+      email: email.toLowerCase(),
       password
     };
+
     dispatch(loginUser(loginData));
   };
 

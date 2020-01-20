@@ -1,38 +1,30 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 //component imports
 import Navbar from '../../components/layout/Navbar/Navbar';
-import People from '../../components/dashboard/People/People';
+import PeopleCard from '../../components/dashboard/PeopleCard/PeopleCard';
 //Redux Imports
 import { useSelector } from 'react-redux';
 //BS imports
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const Dashboard = () => {
   const dashboard = useSelector(state => state.dashboard);
 
   return (
-    <Fragment>
+    <div className="dashboard">
       <Navbar page="dash" />
-      <Container>
-        <div className="dashboard">
-          {dashboard.loading === true ? (
-            <h1>loading ...</h1>
-          ) : (
-            <div>
-              <Row>
-                {dashboard.people.map(person => {
-                  return (
-                    <Col xs={6}>
-                      <People person={person} />
-                    </Col>
-                  );
-                })}
-              </Row>
-            </div>
-          )}
+      {dashboard.loading === true ? (
+        <h1>loading ...</h1>
+      ) : (
+        <div className="dashboard-people-content">
+          <Container fluid>
+            {dashboard.people.map(person => {
+              return <PeopleCard person={person} key={Math.random(1)} />;
+            })}
+          </Container>
         </div>
-      </Container>
-    </Fragment>
+      )}
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ $dark-color: #00192f;
 //COMPONENTS
 @import './elements';
 @import '../components/layout/Navbar/navbar';
-@import '../components/dashboard/People/people';
+@import '../components/dashboard/PeopleCard/peoplecard';
 
 //PAGES
 @import '../pages/Home/homepage';

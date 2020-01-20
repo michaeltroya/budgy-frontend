@@ -17,7 +17,7 @@ const Navbar = ({ page }) => {
   };
 
   return (
-    <div className="navbar">
+    <div className={page === 'dash' ? 'navbar navbar-white' : 'navbar'}>
       <Container fluid>
         {page === 'home' ? (
           <Row>
@@ -27,7 +27,7 @@ const Navbar = ({ page }) => {
               </Link>
             </Col>
             <Col className="navbar-button-container" xs={7}>
-              <Link to="/login" className="navbar-login-button">
+              <Link to="/login" className="btn btn-clear btn-nav">
                 Login
               </Link>
               <Link to="/register" className="btn btn-white">
@@ -46,7 +46,7 @@ const Navbar = ({ page }) => {
         ) : (
           <Row>
             <Col className="navbar-logo-container" xs={6}>
-              <Link to="/">
+              <Link to="/dashboard">
                 <img src={MainLogo} className="navbar-logo" alt="budgy" />
               </Link>
             </Col>

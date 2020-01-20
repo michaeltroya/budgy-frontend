@@ -21,12 +21,10 @@ const Home = () => {
                 </Link>
               </div>
               <p className="homepage-login-button">
-                <span className="question">
-                  Already have an account? <br />
-                  <Link to="/login" className="home-login">
-                    Login
-                  </Link>
-                </span>
+                <span className="question">Already have an account?</span>
+                <Link to="/login" className="btn btn-clear">
+                  Login
+                </Link>
               </p>
             </Col>
           </Row>

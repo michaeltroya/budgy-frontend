@@ -1,4 +1,26 @@
 .dashboard {
-  padding: 3rem 0;
+  background: $gradient-color;
   height: 100%;
+}
+
+.dashboard-people-content {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  padding: 2rem 0;
+  user-select: none;
+  white-space: nowrap;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #00000026;
+  min-height: 60%;
+
+  &::-webkit-scrollbar {
+    height: 0.7rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.418);
+  }
 }
