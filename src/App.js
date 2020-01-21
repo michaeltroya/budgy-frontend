@@ -9,14 +9,17 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import FourOhFour from './pages/404/FourOhFour';
 import AuthRoute from './util/AuthRoute';
+import FirstSteps from './pages/FirstSteps/FirstSteps';
+
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { SET_AUTHENTICATED } from './redux/types';
+import { SET_AUTHENTICATED, SET_FIRST_LOGIN } from './redux/types';
 import { logoutUser } from './redux/actions/userActions';
 import { getDashboard } from './redux/actions/dashboardActions';
 
 const token = localStorage.IDToken;
+const firstLogin = localStorage.firstLogin;
 
 if (token) {
   const decodeToken = jwtDecode(token);
@@ -30,6 +33,10 @@ if (token) {
   }
 }
 
+if (firstLogin) {
+  store.dispatch({ type: SET_FIRST_LOGIN });
+}
+
 const App = () => {
   return (
     <Provider store={store}>
@@ -39,6 +46,7 @@ const App = () => {
           <AuthRoute path="/dashboard" component={Dashboard} />
           <AuthRoute path="/login" component={Login} />
           <AuthRoute path="/register" component={Register} />
+          <AuthRoute path="/first-steps" component={FirstSteps} />
           <Route component={FourOhFour} />
         </Switch>
       </Router>

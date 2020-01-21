@@ -19,3 +19,30 @@
     background-color: rgba(255, 255, 255, 0.418);
   }
 }
+
+.card-container {
+  display: flex;
+}
+
+.add-person {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #44444487;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  color: $white-color;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: $dark-color;
+  }
+}
+
+.add-icon {
+  height: 3.5rem !important;
+  width: 3.5rem !important;
+  margin-bottom: 0.5rem;
+}

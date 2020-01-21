@@ -16,7 +16,7 @@ export const getDashboard = () => dispatch => {
     });
 };
 
-export const saveOrUpdateDashBoard = data => dispatch => {
+export const saveDashboard = data => dispatch => {
   dispatch({ type: LOADING_DASHBOARD });
   axios
     .post('/dashboard/', data)

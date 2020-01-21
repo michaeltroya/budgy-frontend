@@ -5,15 +5,14 @@
   margin-top: -78px;
   z-index: 1;
   position: relative;
-}
-
-svg {
-  position: absolute;
-  bottom: 0;
-  fill: #00192f;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
+  svg {
+    position: absolute;
+    bottom: 0;
+    fill: #00192f;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
 }
 
 .bubble {

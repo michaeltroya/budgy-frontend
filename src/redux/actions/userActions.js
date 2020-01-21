@@ -1,4 +1,11 @@
-import { SET_ERRORS, CLEAR_ERRORS, SET_UNAUTHENTICATED, SET_AUTHENTICATED, CLEAR_DASHBOARD } from '../types';
+import {
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  SET_UNAUTHENTICATED,
+  SET_AUTHENTICATED,
+  CLEAR_DASHBOARD,
+  SET_FIRST_LOGIN
+} from '../types';
 import axios from 'axios';
 import { getDashboard } from './dashboardActions';
 
@@ -20,9 +27,11 @@ export const registerUser = userData => dispatch => {
   axios
     .post('/auth/register', userData)
     .then(res => {
+      setFirstLogin();
       setAuthHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
+      dispatch({ type: SET_FIRST_LOGIN });
       dispatch(getDashboard());
     })
     .catch(err => {
@@ -33,6 +42,7 @@ export const registerUser = userData => dispatch => {
 
 export const logoutUser = () => dispatch => {
   localStorage.removeItem('IDToken');
+  localStorage.removeItem('firstLogin');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({ type: SET_UNAUTHENTICATED });
   dispatch({ type: CLEAR_DASHBOARD });
@@ -42,4 +52,8 @@ const setAuthHeader = token => {
   const IDToken = `Bearer ${token}`;
   localStorage.setItem('IDToken', IDToken);
   axios.defaults.headers.common['Authorization'] = IDToken;
+};
+
+const setFirstLogin = () => {
+  localStorage.setItem('firstLogin', true);
 };
