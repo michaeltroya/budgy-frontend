@@ -1,5 +1,5 @@
-.people-wrapper {
-  width: 200px;
+.card-wrapper {
+  width: 250px;
   margin-right: 0.8rem;
   height: 100%;
   box-sizing: border-box;
@@ -46,6 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 0.5rem;
   h4,
   p {
     margin: 0;
@@ -56,5 +57,19 @@
     &::before {
       content: '$';
     }
+  }
+}
+
+// EDITING MODE STYLING
+
+.editing-input {
+  background-color: #00ecbc69;
+  width: 4rem;
+  border: 0.5px solid #00ecbc;
+  text-align: right;
+  padding: 0 0.3rem;
+  border-radius: 11px;
+  &:focus {
+    outline: none;
   }
 }
