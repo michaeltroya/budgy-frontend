@@ -41,6 +41,7 @@ export const registerUser = userData => dispatch => {
 };
 
 export const logoutUser = () => dispatch => {
+  window.location.href = '/';
   localStorage.removeItem('IDToken');
   localStorage.removeItem('firstLogin');
   delete axios.defaults.headers.common['Authorization'];

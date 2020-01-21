@@ -17,8 +17,8 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const registerData = {
-      username,
-      email,
+      username: username.toLowerCase(),
+      email: email.toLowerCase(),
       password,
       confirmPassword
     };
