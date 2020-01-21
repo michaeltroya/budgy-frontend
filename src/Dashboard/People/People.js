@@ -7,9 +7,13 @@ import { Container } from 'react-bootstrap';
 
 function People() {
   const dashboard = useSelector(state => state.dashboard);
+
   return (
     <div className="dashboard-people">
       <Container fluid>
+        <div className="card-wrapper add-person">
+          <p>hi</p>
+        </div>
         {dashboard.people.map(person => {
           return <PeopleCard person={person} key={Math.random(1)} />;
         })}

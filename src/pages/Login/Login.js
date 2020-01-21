@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import Navbar from '../../components/layout/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actions/userActions';

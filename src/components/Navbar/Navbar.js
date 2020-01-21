@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 // Bootstrap imports
 import { Container, Row, Col } from 'react-bootstrap';
 //img imports
-import WhiteLogo from '../../../images/white-logo.png';
-import MainLogo from '../../../images/main-logo.png';
+import WhiteLogo from '../../images/white-logo.png';
+import MainLogo from '../../images/main-logo.png';
 //redux imports
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../../redux/actions/userActions';
+import { logoutUser } from '../../redux/actions/userActions';
 
 const Navbar = ({ page }) => {
   const dispatch = useDispatch();

@@ -15,15 +15,15 @@ $dark-color: #00192f;
 
 //COMPONENTS
 @import './elements';
-@import '../components/layout/Navbar/navbar';
-@import '../components/dashboard/People/PeopleCard/peopleCard';
-@import '../components/dashboard/People/people';
-@import '../components/dashboard/Totals/totals';
+@import '../components/Navbar/navbar';
+@import '../Dashboard/dashboard';
+@import '../Dashboard/People/people';
+@import '../Dashboard/People/PeopleCard/peopleCard';
+@import '../Dashboard/Totals/totals';
 
 //PAGES
 @import '../pages/Home/homepage';
 @import './formpages';
-@import '../pages/Dashboard/dashboard';
 
 //MEDIA QUERIES
 @import './responsive';

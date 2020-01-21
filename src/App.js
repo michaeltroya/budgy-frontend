@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 //Component/Page Imports
 import Home from './pages/Home/Home';
-import Dashboard from './pages/Dashboard/Dashboard';
+import Dashboard from './Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import FourOhFour from './pages/404/FourOhFour';

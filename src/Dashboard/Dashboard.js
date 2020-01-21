@@ -1,14 +1,10 @@
 import React, { Fragment } from 'react';
 //component imports
-import Navbar from '../../components/layout/Navbar/Navbar';
-import People from '../../components/dashboard/People/People';
-
+import Navbar from '../components/Navbar/Navbar';
+import People from './People/People';
+import Totals from './Totals/Totals';
 //Redux Imports
 import { useSelector } from 'react-redux';
-
-//BS imports
-
-import Totals from '../../components/dashboard/Totals/Totals';
 
 const Dashboard = () => {
   const dashboard = useSelector(state => state.dashboard);

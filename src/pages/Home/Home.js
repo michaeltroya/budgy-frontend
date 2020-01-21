@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../../components/layout/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 //BS imports
 import { Container, Row, Col } from 'react-bootstrap';
 const Home = () => {
