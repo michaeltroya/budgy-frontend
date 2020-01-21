@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED, SET_FIRST_LOGIN } from '../types';
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED, SET_FIRST_LOGIN, UNSET_FIRST_LOGIN } from '../types';
 
 const initialState = {
   authenticated: false,
@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         firstLogin: true
+      };
+    case UNSET_FIRST_LOGIN:
+      return {
+        ...state,
+        firstLogin: false
       };
     case SET_AUTHENTICATED:
       return {

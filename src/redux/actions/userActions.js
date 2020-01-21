@@ -27,7 +27,7 @@ export const registerUser = userData => dispatch => {
   axios
     .post('/auth/register', userData)
     .then(res => {
-      setFirstLogin();
+      localStorage.setItem('firstLogin', true);
       setAuthHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
@@ -52,8 +52,4 @@ const setAuthHeader = token => {
   const IDToken = `Bearer ${token}`;
   localStorage.setItem('IDToken', IDToken);
   axios.defaults.headers.common['Authorization'] = IDToken;
-};
-
-const setFirstLogin = () => {
-  localStorage.setItem('firstLogin', true);
 };

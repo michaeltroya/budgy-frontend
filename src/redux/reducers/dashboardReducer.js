@@ -1,4 +1,4 @@
-import { SET_DASHBOARD, LOADING_DASHBOARD, SAVE_DASHBOARD, CLEAR_DASHBOARD } from '../types';
+import { SET_DASHBOARD, LOADING_DASHBOARD, SAVING_DASHBOARD, CLEAR_DASHBOARD } from '../types';
 
 const initialState = {
   totalBudget: 0,
@@ -11,6 +11,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case SAVING_DASHBOARD:
+      return {
+        ...state,
+        saving: true
+      };
     case LOADING_DASHBOARD:
       return {
         ...state,
@@ -22,12 +27,7 @@ export default function(state = initialState, action) {
         loading: false,
         saving: false
       };
-    case SAVE_DASHBOARD:
-      return {
-        ...action.payload,
-        loading: false,
-        saving: true
-      };
+
     case CLEAR_DASHBOARD:
       return {
         ...state
