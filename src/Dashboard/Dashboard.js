@@ -17,7 +17,7 @@ const Dashboard = () => {
       ) : (
         <Fragment>
           <People />
-          <Totals />
+          {/* <Totals /> */}
         </Fragment>
       )}
     </div>

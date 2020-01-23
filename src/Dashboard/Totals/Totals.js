@@ -29,8 +29,7 @@ const Totals = () => {
           <Col xs={12}>
             <div className="total-card">
               <h4>Remaining</h4>
-
-              <p>{dashboard.totalRemaining}</p>
+              <p>{dashboard.totalBudget - dashboard.totalSpent}</p>
             </div>
           </Col>
           <Col xs={12} className="d-flex justify-content-center align-items-center">
