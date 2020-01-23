@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import PeopleCard from './PeopleCard';
+//component imports
+import PeopleCard from './PeopleCard/PeopleCard';
+import MyModal from './MyModal/MyModal';
 //Redux Imports
 import { useSelector } from 'react-redux';
 //bs imports
@@ -9,22 +11,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 function People() {
-  const personPlaceholder = {
+  const newPerson = {
     budget: 0,
     spent: 0,
     remaining: 0,
     items: [],
     name: 'name'
   };
-  const dashboard = useSelector(state => state.dashboard);
-  const [newPeople, setNewPeople] = useState([personPlaceholder]);
-  const [allPeople, setAllPeople] = useState([...dashboard.people]);
 
-  const handleClick = () => {
-    setNewPeople([...newPeople, personPlaceholder]);
-    setAllPeople([...allPeople, ...newPeople]);
-    console.log(newPeople);
-  };
+  const dashboard = useSelector(state => state.dashboard);
+  const [allPeople, setAllPeople] = useState([...dashboard.people]);
+  const [modalShow, setModalShow] = useState(true);
 
   return (
     <div className="dashboard-people">
@@ -32,14 +29,14 @@ function People() {
         {allPeople.map(person => (
           <PeopleCard person={person} key={Math.random(0)} />
         ))}
-
         <div className="card-wrapper">
-          <div className="add-person" onClick={handleClick}>
+          <div className="add-person" onClick={() => setModalShow(true)}>
             <FontAwesomeIcon icon={faPlusCircle} className="add-icon" />
             <h3>Add Person</h3>
           </div>
         </div>
       </Container>
+      <MyModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 }
