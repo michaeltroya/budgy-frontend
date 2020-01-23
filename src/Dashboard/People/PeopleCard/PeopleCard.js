@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+//Redux Imports
+import { useDispatch, useSelector } from 'react-redux';
+import { saveDashboard } from '../../../redux/actions/dashboardActions';
 
-const PeopleCard = ({ person }) => {
+const PeopleCard = ({ person, index }) => {
+  const dashboard = useSelector(state => state.dashboard);
+  const dispatch = useDispatch();
+
+  const [newList, setNewList] = useState([...dashboard.people]);
+
   const handleEdit = () => {
-    console.log('hi');
+    console.log(person.length);
+  };
+
+  const handleDelete = () => {
+    setNewList(newList.splice(index, 1));
+
+    const saveData = {
+      totalBudget: dashboard.totalBudget,
+      totalRemaining: dashboard.totalRemaining,
+      totalSpent: dashboard.totalSpent,
+      people: [...newList]
+    };
+    dispatch(saveDashboard(saveData));
   };
 
   return (
@@ -33,6 +53,9 @@ const PeopleCard = ({ person }) => {
         <div className="card-footer">
           <button className="btn btn-clear" onClick={handleEdit}>
             Edit
+          </button>
+          <button className="btn btn-clear" onClick={handleDelete}>
+            Delete
           </button>
         </div>
       </div>

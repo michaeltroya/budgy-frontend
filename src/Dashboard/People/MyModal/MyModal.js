@@ -23,7 +23,7 @@ const MyModal = props => {
     const saveData = {
       totalBudget: dashboard.totalBudget,
       totalRemaining: dashboard.totalRemaining,
-      totalBudget: dashboard.totalBudget,
+      totalSpent: dashboard.totalSpent,
       people: [...dashboard.people, newPerson]
     };
     dispatch(saveDashboard(saveData));

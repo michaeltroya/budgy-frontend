@@ -11,23 +11,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 function People() {
-  const newPerson = {
-    budget: 0,
-    spent: 0,
-    remaining: 0,
-    items: [],
-    name: 'name'
-  };
-
   const dashboard = useSelector(state => state.dashboard);
-  const [allPeople, setAllPeople] = useState([...dashboard.people]);
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div className="dashboard-people">
       <Container fluid className="card-container">
-        {allPeople.map(person => (
-          <PeopleCard person={person} key={Math.random(0)} />
+        {dashboard.people.map((person, index) => (
+          <PeopleCard person={person} index={index} key={index} />
         ))}
         <div className="card-wrapper">
           <div className="add-person" onClick={() => setModalShow(true)}>
