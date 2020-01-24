@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../../redux/actions/dashboardActions';
 
-const PeopleCard = ({ person, index }) => {
-  const dashboard = useSelector(state => state.dashboard);
+const PeopleCard = ({ index }) => {
   const dispatch = useDispatch();
 
-  const [newList, setNewList] = useState([...dashboard.people]);
+  //GET REDUX STATES
+  const dashboard = useSelector(state => state.dashboard);
+  const person = useSelector(state => state.dashboard.people[index]);
 
-  const handleEdit = () => {
-    console.log(person.length);
-  };
+  //EDITING MODE
+  const [editingMode, setEditingMode] = useState(false);
+
+  // UPDATING VARIABLES IN EDITING MODE
+  const [updatedPeople, setUpdatedPeople] = useState([...dashboard.people]);
+
+  const [newBudget, setNewBudget] = useState(person.budget);
 
   const handleDelete = () => {
-    setNewList(newList.splice(index, 1));
-
+    setUpdatedPeople(updatedPeople.splice(index, 1));
     const saveData = {
       totalBudget: dashboard.totalBudget,
       totalRemaining: dashboard.totalRemaining,
       totalSpent: dashboard.totalSpent,
-      people: [...newList]
+      people: [...updatedPeople]
     };
     dispatch(saveDashboard(saveData));
   };
 
+  const handleSaveChanges = () => {};
+
   return (
-    <div className="card-wrapper" key={Math.random(1)}>
+    <div className="card-wrapper">
       <div className="people-card">
         <div className="card-header">
           <h3>{person.name}</h3>
@@ -34,7 +40,18 @@ const PeopleCard = ({ person, index }) => {
         <div className="card-content">
           <div className="card-section">
             <h4>Budget</h4>
-            <p>{person.budget}</p>
+            {editingMode === true ? (
+              <input
+                placeholder="email"
+                type="text"
+                id="email"
+                name="email"
+                value={newBudget}
+                onChange={e => setNewBudget(e.target.value)}
+              />
+            ) : (
+              <p>{person.budget}</p>
+            )}
           </div>
           <div className="card-section">
             <h4>Spent</h4>
@@ -51,12 +68,25 @@ const PeopleCard = ({ person, index }) => {
     </div> */}
         </div>
         <div className="card-footer">
-          <button className="btn btn-clear" onClick={handleEdit}>
-            Edit
-          </button>
-          <button className="btn btn-clear" onClick={handleDelete}>
-            Delete
-          </button>
+          {editingMode === true ? (
+            <Fragment>
+              <button className="btn btn-clear" onClick={handleSaveChanges}>
+                Save
+              </button>
+              <button className="btn btn-clear" onClick={() => setEditingMode(false)}>
+                Cancel
+              </button>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <button className="btn btn-clear" onClick={() => setEditingMode(true)}>
+                Edit
+              </button>
+              <button className="btn btn-clear" onClick={handleDelete}>
+                Delete
+              </button>
+            </Fragment>
+          )}
         </div>
       </div>
     </div>
