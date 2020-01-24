@@ -16,7 +16,7 @@ const PeopleCard = ({ index }) => {
   // UPDATING VARIABLES IN EDITING MODE
   const [updatedPeople, setUpdatedPeople] = useState([...dashboard.people]);
 
-  const [newBudget, setNewBudget] = useState(person.budget);
+  const [updatedBudget, setUpdatedBudget] = useState(person.budget);
 
   const handleDelete = () => {
     setUpdatedPeople(updatedPeople.splice(index, 1));
@@ -29,7 +29,20 @@ const PeopleCard = ({ index }) => {
     dispatch(saveDashboard(saveData));
   };
 
-  const handleSaveChanges = () => {};
+  //TRY TO MAKE THIS CLEANER !!!
+
+  const handleSaveChanges = () => {
+    const ppl = [...dashboard.people];
+    ppl[index].budget = parseInt(updatedBudget);
+    setUpdatedPeople([...ppl]);
+    const saveData = {
+      totalBudget: dashboard.totalBudget,
+      totalRemaining: dashboard.totalRemaining,
+      totalSpent: dashboard.totalSpent,
+      people: [...updatedPeople]
+    };
+    dispatch(saveDashboard(saveData));
+  };
 
   return (
     <div className="card-wrapper">
@@ -46,8 +59,8 @@ const PeopleCard = ({ index }) => {
                 type="text"
                 id="email"
                 name="email"
-                value={newBudget}
-                onChange={e => setNewBudget(e.target.value)}
+                value={updatedBudget}
+                onChange={e => setUpdatedBudget(e.target.value)}
               />
             ) : (
               <p>{person.budget}</p>
