@@ -1,9 +1,22 @@
 .item-section {
   width: 100%;
-  padding: 1rem 0.7rem;
+  padding: 1rem 0.7rem 0;
   max-height: 250px;
   overflow-x: hidden;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    height: 0.2rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #6c757d3b;
+  }
+}
+
+.add-item-section {
+  width: 100%;
+  padding: 0.7rem 0.7rem 0;
 }
 
 .item-heading {
@@ -23,6 +36,7 @@
   background-color: $dark-color;
   position: relative;
   min-height: 43px;
+  box-shadow: 4px 4px 7px -5px rgba(0, 0, 0, 0.75);
   h4,
   p {
     margin: 0;
@@ -40,11 +54,13 @@
 }
 
 .add-item {
+  width: 100%;
   justify-content: center;
   background-color: white;
   color: $dark-color;
   transition: all 0.4s ease;
   cursor: pointer;
+  box-shadow: none;
   &:hover {
     background-color: $accent-color;
   }

@@ -21,8 +21,6 @@ const Item = ({ personIndex, itemIndex, editingMode }) => {
 
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      totalRemaining: dashboard.totalRemaining,
-      totalSpent: dashboard.totalSpent,
       people: [...ppl]
     };
 

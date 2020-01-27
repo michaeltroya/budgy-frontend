@@ -25,8 +25,6 @@ const Card = ({ personIndex }) => {
     setUpdatedPeople(updatedPeople.splice(personIndex, 1));
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      totalRemaining: dashboard.totalRemaining,
-      totalSpent: dashboard.totalSpent,
       people: [...updatedPeople]
     };
     dispatch(saveDashboard(saveData));
@@ -40,11 +38,30 @@ const Card = ({ personIndex }) => {
     setUpdatedPeople([...ppl]);
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      totalRemaining: dashboard.totalRemaining,
-      totalSpent: dashboard.totalSpent,
       people: [...updatedPeople]
     };
     dispatch(saveDashboard(saveData));
+  };
+
+  const getSpent = () => {
+    let total = 0;
+
+    if (person.items.length === 0) {
+      return total;
+    } else {
+      for (let i = 0; i < person.items.length; i++) {
+        total += person.items[i].itemCost;
+      }
+    }
+
+    return total;
+  };
+
+  const getRemaining = () => {
+    let budget = person.budget;
+    let spent = getSpent();
+    let total = budget - spent;
+    return total;
   };
 
   return (
@@ -71,11 +88,11 @@ const Card = ({ personIndex }) => {
           </div>
           <div className="card-section">
             <h4>Spent</h4>
-            <p>{person.spent}</p>
+            <p>{getSpent()}</p>
           </div>
           <div className="card-section">
             <h4>Remaining</h4>
-            <p>{person.budget - person.spent}</p>
+            <p>{getRemaining()}</p>
           </div>
         </div>
         <h3 className="item-heading">Items</h3>
@@ -88,10 +105,13 @@ const Card = ({ personIndex }) => {
               key={Math.random(0)}
             />
           ))}
+        </div>
+        <div className="add-item-section">
           <div className="item add-item" onClick={() => setModalShow(true)}>
             Add item
           </div>
         </div>
+
         <div className="card-footer">
           {editingMode === true ? (
             <Fragment>

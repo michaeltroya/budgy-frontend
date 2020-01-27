@@ -18,8 +18,6 @@ const FirstSteps = () => {
     e.preventDefault();
     const updateData = {
       totalBudget: initialBudget,
-      totalSpent: dashboard.totalSpent,
-      totalRemaining: dashboard.totalRemaining,
       people: dashboard.people
     };
 

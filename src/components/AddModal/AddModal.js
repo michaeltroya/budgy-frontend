@@ -13,8 +13,6 @@ const MyModal = props => {
 
   const [newPerson, setNewPerson] = useState({
     budget: '',
-    spent: 0,
-    remaining: 0,
     items: [],
     name: ''
   });
@@ -22,8 +20,6 @@ const MyModal = props => {
   const handleAddPerson = () => {
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      totalRemaining: dashboard.totalRemaining,
-      totalSpent: dashboard.totalSpent,
       people: [...dashboard.people, newPerson]
     };
     dispatch(saveDashboard(saveData));
@@ -44,8 +40,6 @@ const MyModal = props => {
 
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      totalRemaining: dashboard.totalRemaining,
-      totalSpent: dashboard.totalSpent,
       people: [...ppl]
     };
     dispatch(saveDashboard(saveData));
@@ -88,6 +82,7 @@ const MyModal = props => {
               id="name"
               name="name"
               value={newItem.name}
+              autoComplete="off"
               onChange={e => setNewItem({ ...newItem, itemName: e.target.value })}
             />
             <h1>Item Cost</h1>
@@ -95,6 +90,7 @@ const MyModal = props => {
               type="text"
               id="budget"
               name="budget"
+              autoComplete="off"
               value={newItem.budget}
               onChange={e => setNewItem({ ...newItem, itemCost: parseInt(e.target.value) })}
             />
