@@ -16,19 +16,19 @@ const Totals = () => {
         <Row>
           <Col xs={6}>
             <div className="total-card">
-              <h4>Budget</h4>
+              <h4>Total Budget</h4>
               <p>{dashboard.totalBudget}</p>
             </div>
           </Col>
           <Col xs={6}>
             <div className="total-card">
-              <h4>Spent</h4>
+              <h4>Total Spent</h4>
               <p>{dashboard.totalSpent}</p>
             </div>
           </Col>
           <Col xs={12}>
             <div className="total-card">
-              <h4>Remaining</h4>
+              <h4>Total Remaining</h4>
               <p>{dashboard.totalBudget - dashboard.totalSpent}</p>
             </div>
           </Col>

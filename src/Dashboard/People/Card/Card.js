@@ -3,23 +3,24 @@ import React, { useState, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../../redux/actions/dashboardActions';
 
-const PeopleCard = ({ index }) => {
+import Item from './Item/Item';
+
+const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
 
   //GET REDUX STATES
   const dashboard = useSelector(state => state.dashboard);
-  const person = useSelector(state => state.dashboard.people[index]);
+  const person = useSelector(state => state.dashboard.people[personIndex]);
 
   //EDITING MODE
   const [editingMode, setEditingMode] = useState(false);
 
   // UPDATING VARIABLES IN EDITING MODE
   const [updatedPeople, setUpdatedPeople] = useState([...dashboard.people]);
-
   const [updatedBudget, setUpdatedBudget] = useState(person.budget);
 
   const handleDelete = () => {
-    setUpdatedPeople(updatedPeople.splice(index, 1));
+    setUpdatedPeople(updatedPeople.splice(personIndex, 1));
     const saveData = {
       totalBudget: dashboard.totalBudget,
       totalRemaining: dashboard.totalRemaining,
@@ -33,7 +34,7 @@ const PeopleCard = ({ index }) => {
 
   const handleSaveChanges = () => {
     const ppl = [...dashboard.people];
-    ppl[index].budget = parseInt(updatedBudget);
+    ppl[personIndex].budget = parseInt(updatedBudget);
     setUpdatedPeople([...ppl]);
     const saveData = {
       totalBudget: dashboard.totalBudget,
@@ -46,7 +47,7 @@ const PeopleCard = ({ index }) => {
 
   return (
     <div className="card-wrapper">
-      <div className="people-card">
+      <div className="card">
         <div className="card-header">
           <h3>{person.name}</h3>
         </div>
@@ -72,13 +73,21 @@ const PeopleCard = ({ index }) => {
           </div>
           <div className="card-section">
             <h4>Remaining</h4>
-            <p>{person.remaining}</p>
+            <p>{person.budget - person.spent}</p>
           </div>
-          {/* <div className="item-list">
-      {person.items.map(item => {
-        return <p key={Math.random(1)}>{`${item.itemName} $${item.itemCost}`}</p>;
-      })}
-    </div> */}
+        </div>
+        <div className="item-section">
+          <h3>Items</h3>
+          <div className="item-list">
+            {person.items.map((_, itemIndex) => (
+              <Item
+                personIndex={personIndex}
+                itemIndex={itemIndex}
+                editingMode={editingMode}
+                key={Math.random(0)}
+              />
+            ))}
+          </div>
         </div>
         <div className="card-footer">
           {editingMode === true ? (
@@ -106,4 +115,4 @@ const PeopleCard = ({ index }) => {
   );
 };
 
-export default PeopleCard;
+export default Card;

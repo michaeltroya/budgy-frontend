@@ -1,0 +1,36 @@
+.item-section {
+  width: 100%;
+  padding: 0 0.7rem;
+  h3 {
+    text-align: center;
+    padding: 1rem 0;
+  }
+}
+
+.item {
+  background-color: greenyellow;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  align-items: center;
+  border-radius: 10px;
+  color: $white-color;
+  background-color: $dark-color;
+  position: relative;
+  min-height: 43px;
+}
+
+.item-right-side {
+  display: flex;
+  align-items: center;
+}
+
+.delete-item {
+  background-color: red;
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+  margin: 0;
+  justify-self: flex-end;
+  margin-left: 0.5rem;
+}

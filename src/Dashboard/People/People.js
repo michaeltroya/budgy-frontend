@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //component imports
-import PeopleCard from './PeopleCard/PeopleCard';
-import MyModal from './MyModal/MyModal';
+import PeopleCard from './Card/Card';
+import AddModal from './AddModal/AddModal';
 //Redux Imports
 import { useSelector } from 'react-redux';
 //bs imports
@@ -17,8 +17,8 @@ function People() {
   return (
     <div className="dashboard-people">
       <Container fluid className="card-container">
-        {dashboard.people.map((_, index) => (
-          <PeopleCard index={index} key={Math.random(0)} />
+        {dashboard.people.map((_, personIndex) => (
+          <PeopleCard personIndex={personIndex} key={Math.random(0)} />
         ))}
         <div className="card-wrapper">
           <div className="add-person" onClick={() => setModalShow(true)}>
@@ -27,7 +27,7 @@ function People() {
           </div>
         </div>
       </Container>
-      <MyModal show={modalShow} onHide={() => setModalShow(false)} />
+      <AddModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 }
