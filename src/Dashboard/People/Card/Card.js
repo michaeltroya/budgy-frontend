@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../../redux/actions/dashboardActions';
 
 import Item from './Item/Item';
+import AddModal from '../../../components/AddModal/AddModal';
 
 const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
@@ -12,8 +13,9 @@ const Card = ({ personIndex }) => {
   const dashboard = useSelector(state => state.dashboard);
   const person = useSelector(state => state.dashboard.people[personIndex]);
 
-  //EDITING MODE
+  //EDITING MODE & MODAL STATE
   const [editingMode, setEditingMode] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   // UPDATING VARIABLES IN EDITING MODE
   const [updatedPeople, setUpdatedPeople] = useState([...dashboard.people]);
@@ -56,7 +58,6 @@ const Card = ({ personIndex }) => {
             <h4>Budget</h4>
             {editingMode === true ? (
               <input
-                placeholder="email"
                 type="text"
                 id="email"
                 name="email"
@@ -76,17 +77,18 @@ const Card = ({ personIndex }) => {
             <p>{person.budget - person.spent}</p>
           </div>
         </div>
+        <h3 className="item-heading">Items</h3>
         <div className="item-section">
-          <h3>Items</h3>
-          <div className="item-list">
-            {person.items.map((_, itemIndex) => (
-              <Item
-                personIndex={personIndex}
-                itemIndex={itemIndex}
-                editingMode={editingMode}
-                key={Math.random(0)}
-              />
-            ))}
+          {person.items.map((_, itemIndex) => (
+            <Item
+              personIndex={personIndex}
+              itemIndex={itemIndex}
+              editingMode={editingMode}
+              key={Math.random(0)}
+            />
+          ))}
+          <div className="item add-item" onClick={() => setModalShow(true)}>
+            Add item
           </div>
         </div>
         <div className="card-footer">
@@ -111,6 +113,7 @@ const Card = ({ personIndex }) => {
           )}
         </div>
       </div>
+      <AddModal show={modalShow} onHide={() => setModalShow(false)} type="item" personindex={personIndex} />
     </div>
   );
 };

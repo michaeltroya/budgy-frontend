@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //component imports
 import PeopleCard from './Card/Card';
-import AddModal from './AddModal/AddModal';
+import AddModal from '../../components/AddModal/AddModal';
 //Redux Imports
 import { useSelector } from 'react-redux';
 //bs imports
@@ -27,7 +27,7 @@ function People() {
           </div>
         </div>
       </Container>
-      <AddModal show={modalShow} onHide={() => setModalShow(false)} />
+      <AddModal show={modalShow} onHide={() => setModalShow(false)} type="person" />
     </div>
   );
 }

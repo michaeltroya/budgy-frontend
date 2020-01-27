@@ -1,10 +1,13 @@
 .item-section {
   width: 100%;
   padding: 0 0.7rem;
-  h3 {
-    text-align: center;
-    padding: 1rem 0;
-  }
+  max-height: 250px;
+  overflow-x: auto;
+}
+
+.item-heading {
+  text-align: center;
+  padding: 0.5rem 0;
 }
 
 .item {
@@ -19,6 +22,17 @@
   background-color: $dark-color;
   position: relative;
   min-height: 43px;
+}
+
+.add-item {
+  justify-content: center;
+  background-color: white;
+  color: $dark-color;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #00ecbc;
+  }
 }
 
 .item-right-side {

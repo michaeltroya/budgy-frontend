@@ -3,7 +3,7 @@
 }
 
 .card-wrapper {
-  min-width: 250px;
+  min-width: 260px;
   margin-right: 0.8rem;
   box-sizing: border-box;
   display: inline-block;
@@ -12,6 +12,7 @@
 }
 
 .card {
+  max-width: 260px;
   background-color: $white-color;
   border-radius: 10px;
   display: flex;
@@ -60,6 +61,16 @@
   p {
     &::before {
       content: '$';
+    }
+  }
+  input {
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid red;
+    width: 50%;
+    &:focus {
+      border: none;
+      outline: none;
     }
   }
 }
