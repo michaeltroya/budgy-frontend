@@ -1,13 +1,14 @@
 .item-section {
   width: 100%;
-  padding: 0 0.7rem;
+  padding: 1rem 0.7rem;
   max-height: 250px;
-  overflow-x: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .item-heading {
   text-align: center;
-  padding: 0.5rem 0;
+  padding-top: 1rem;
 }
 
 .item {
@@ -15,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   align-items: center;
   border-radius: 10px;
   color: $white-color;
@@ -41,10 +42,13 @@
 }
 
 .delete-item {
-  background-color: red;
-  padding: 0.1rem 0.4rem;
-  border-radius: 5px;
-  margin: 0;
-  justify-self: flex-end;
-  margin-left: 0.5rem;
+  height: 1.3rem !important;
+  width: 1.3rem !important;
+  background-color: #008cff;
+  padding: 0.2rem;
+  position: absolute;
+  right: -7px;
+  top: -6px;
+  border-radius: 50%;
+  cursor: pointer;
 }
