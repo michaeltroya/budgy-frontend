@@ -12,14 +12,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <Navbar page="dash" />
-      {dashboard.loading === true ? (
-        <h1>loading ...</h1>
-      ) : (
-        <Fragment>
-          <People />
-          <Totals />
-        </Fragment>
-      )}
+      <Fragment>
+        <People />
+        <Totals />
+      </Fragment>
     </div>
   );
 };

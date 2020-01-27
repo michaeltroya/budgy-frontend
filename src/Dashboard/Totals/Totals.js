@@ -7,9 +7,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 const Totals = () => {
   const dashboard = useSelector(state => state.dashboard);
 
-  const handleSave = () => {
-    console.log(dashboard);
-  };
   return (
     <div className="dashboard-totals">
       <Container>
@@ -31,11 +28,6 @@ const Totals = () => {
               <h4>Total Remaining</h4>
               <p>{dashboard.totalBudget - dashboard.totalSpent}</p>
             </div>
-          </Col>
-          <Col xs={12} className="d-flex justify-content-center align-items-center">
-            <button className="btn btn-white" onClick={handleSave}>
-              Save
-            </button>
           </Col>
         </Row>
       </Container>

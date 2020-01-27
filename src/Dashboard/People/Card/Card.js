@@ -61,6 +61,7 @@ const Card = ({ personIndex }) => {
                 type="text"
                 id="email"
                 name="email"
+                autoComplete="off"
                 value={updatedBudget}
                 onChange={e => setUpdatedBudget(e.target.value)}
               />

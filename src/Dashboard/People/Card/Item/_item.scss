@@ -23,6 +23,20 @@
   background-color: $dark-color;
   position: relative;
   min-height: 43px;
+  h4,
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    text-transform: capitalize;
+  }
+
+  p {
+    &::before {
+      content: '$';
+    }
+  }
 }
 
 .add-item {
@@ -32,7 +46,7 @@
   transition: all 0.4s ease;
   cursor: pointer;
   &:hover {
-    background-color: #00ecbc;
+    background-color: $accent-color;
   }
 }
 
@@ -44,7 +58,7 @@
 .delete-item {
   height: 1.3rem !important;
   width: 1.3rem !important;
-  background-color: #008cff;
+  background-color: $main-color;
   padding: 0.2rem;
   position: absolute;
   right: -7px;

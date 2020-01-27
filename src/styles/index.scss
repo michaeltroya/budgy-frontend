@@ -1,5 +1,6 @@
 //COLORS
 $main-color: #008cff;
+$accent-color: #00ecbc;
 $gradient-color: linear-gradient(-221deg, #008cff 0%, #00ecbc 100%);
 $white-color: #fff;
 $dark-color: #00192f;
@@ -22,6 +23,7 @@ $dark-color: #00192f;
 @import '../Dashboard/Totals/totals';
 @import '../Dashboard/People/Card/card';
 @import '../Dashboard/People/Card/Item/item';
+@import '../components/AddModal/addModal';
 
 //PAGES
 @import '../pages/Home/homepage';

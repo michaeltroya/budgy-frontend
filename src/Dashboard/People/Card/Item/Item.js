@@ -31,9 +31,9 @@ const Item = ({ personIndex, itemIndex, editingMode }) => {
 
   return (
     <div className="item">
-      <div className="item-name">{item.itemName}</div>
+      <h4 className="item-name">{item.itemName}</h4>
       <div className="item-right-side">
-        <div className="item-cost">{item.itemCost}</div>
+        <p className="item-cost">{item.itemCost}</p>
         {editingMode === true ? (
           <FontAwesomeIcon icon={faMinusCircle} className="delete-item" onClick={handleDeleteItem} />
         ) : null}

@@ -27,6 +27,8 @@ const MyModal = props => {
       people: [...dashboard.people, newPerson]
     };
     dispatch(saveDashboard(saveData));
+    props.onHide();
+    console.log();
   };
 
   //NEW ITEM
@@ -46,24 +48,22 @@ const MyModal = props => {
       totalSpent: dashboard.totalSpent,
       people: [...ppl]
     };
-
     dispatch(saveDashboard(saveData));
+    props.onHide();
   };
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Add New Person</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="add-modal">
         {props.type === 'person' ? (
           <Fragment>
-            <h1>Person NAme</h1>
+            <h1>Name</h1>
             <input
               type="text"
               id="name"
               name="name"
               value={newPerson.name}
+              autoComplete="off"
               onChange={e => setNewPerson({ ...newPerson, name: e.target.value })}
             />
             <h1>Budget</h1>
@@ -71,10 +71,14 @@ const MyModal = props => {
               type="text"
               id="budget"
               name="budget"
+              autoComplete="off"
               value={newPerson.budget}
-              onChange={e => setNewPerson({ ...newPerson, budget: parseInt(e.target.value) })}
+              onChange={e => setNewPerson({ ...newPerson, budget: e.target.value })}
             />
-            <button onClick={handleAddPerson}>add </button>
+
+            <button onClick={handleAddPerson} className="btn btn-gradient">
+              add
+            </button>
           </Fragment>
         ) : (
           <Fragment>
@@ -94,7 +98,9 @@ const MyModal = props => {
               value={newItem.budget}
               onChange={e => setNewItem({ ...newItem, itemCost: parseInt(e.target.value) })}
             />
-            <button onClick={handleAddItem}>add </button>
+            <button onClick={handleAddItem} className="btn btn-gradient">
+              add
+            </button>
           </Fragment>
         )}
       </Modal.Body>
