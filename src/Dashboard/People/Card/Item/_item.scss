@@ -71,15 +71,3 @@
   align-items: center;
   justify-content: flex-end;
 }
-
-.delete-item {
-  height: 1.3rem !important;
-  width: 1.3rem !important;
-  background-color: $main-color;
-  padding: 0.2rem;
-  position: absolute;
-  right: -7px;
-  top: -6px;
-  border-radius: 50%;
-  cursor: pointer;
-}

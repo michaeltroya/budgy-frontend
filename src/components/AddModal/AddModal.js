@@ -24,7 +24,6 @@ const MyModal = props => {
     };
     dispatch(saveDashboard(saveData));
     props.onHide();
-    console.log();
   };
 
   //NEW ITEM
@@ -41,6 +40,19 @@ const MyModal = props => {
     const saveData = {
       totalBudget: dashboard.totalBudget,
       people: [...ppl]
+    };
+    dispatch(saveDashboard(saveData));
+    props.onHide();
+  };
+
+  //EDIT BUDGET
+
+  const [newBudget, setNewBudget] = useState('');
+
+  const handleSaveBudget = () => {
+    const saveData = {
+      totalBudget: newBudget,
+      people: [...dashboard.people]
     };
     dispatch(saveDashboard(saveData));
     props.onHide();
@@ -74,13 +86,28 @@ const MyModal = props => {
               add
             </button>
           </Fragment>
+        ) : props.type === 'totals' ? (
+          <Fragment>
+            <h1>New Budget</h1>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={newBudget}
+              autoComplete="off"
+              onChange={e => setNewBudget(e.target.value)}
+            />
+            <button onClick={handleSaveBudget} className="btn btn-gradient">
+              Save
+            </button>
+          </Fragment>
         ) : (
           <Fragment>
             <h1>Item Name</h1>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="item-name"
+              name="item-name"
               value={newItem.name}
               autoComplete="off"
               onChange={e => setNewItem({ ...newItem, itemName: e.target.value })}
@@ -88,10 +115,10 @@ const MyModal = props => {
             <h1>Item Cost</h1>
             <input
               type="text"
-              id="budget"
-              name="budget"
+              id="item-cost"
+              name="item-cost"
               autoComplete="off"
-              value={newItem.budget}
+              value={newItem.itemCost}
               onChange={e => setNewItem({ ...newItem, itemCost: parseInt(e.target.value) })}
             />
             <button onClick={handleAddItem} className="btn btn-gradient">
