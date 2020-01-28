@@ -43,24 +43,23 @@ const Card = ({ personIndex }) => {
     dispatch(saveDashboard(saveData));
   };
 
-  const getSpent = () => {
-    let total = 0;
+  const getSpendAndRemaining = () => {
+    let budget = person.budget;
+    let total = {
+      spent: 0,
+      remaining: 0
+    };
 
     if (person.items.length === 0) {
       return total;
     } else {
       for (let i = 0; i < person.items.length; i++) {
-        total += person.items[i].itemCost;
+        total.spent += person.items[i].itemCost;
       }
     }
 
-    return total;
-  };
+    total.remaining = budget - total.spent;
 
-  const getRemaining = () => {
-    let budget = person.budget;
-    let spent = getSpent();
-    let total = budget - spent;
     return total;
   };
 
@@ -88,11 +87,11 @@ const Card = ({ personIndex }) => {
           </div>
           <div className="card-section">
             <h4>Spent</h4>
-            <p>{getSpent()}</p>
+            <p>{getSpendAndRemaining().spent}</p>
           </div>
           <div className="card-section">
             <h4>Remaining</h4>
-            <p>{getRemaining()}</p>
+            <p>{getSpendAndRemaining().remaining}</p>
           </div>
         </div>
         <h3 className="item-heading">Items</h3>

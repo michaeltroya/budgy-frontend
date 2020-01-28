@@ -6,11 +6,11 @@
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    height: 0.2rem;
+    width: 0.4rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #6c757d3b;
+    background-color: #5252528f;
   }
 }
 
@@ -69,6 +69,7 @@
 .item-right-side {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .delete-item {
