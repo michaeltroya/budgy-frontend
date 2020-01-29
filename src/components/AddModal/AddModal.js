@@ -18,9 +18,11 @@ const MyModal = props => {
   });
 
   const handleAddPerson = () => {
+    const formattedPerson = { ...newPerson, budget: parseFloat(newPerson.budget).toFixed(2) };
+
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      people: [...dashboard.people, newPerson]
+      people: [...dashboard.people, formattedPerson]
     };
     dispatch(saveDashboard(saveData));
     props.onHide();
@@ -34,8 +36,10 @@ const MyModal = props => {
   });
 
   const handleAddItem = () => {
+    const formattedItem = { ...newItem, itemCost: parseFloat(newItem.itemCost).toFixed(2) };
+
     const ppl = [...dashboard.people];
-    ppl[props.personindex].items.push(newItem);
+    ppl[props.personindex].items.push(formattedItem);
 
     const saveData = {
       totalBudget: dashboard.totalBudget,
@@ -51,7 +55,7 @@ const MyModal = props => {
 
   const handleSaveBudget = () => {
     const saveData = {
-      totalBudget: newBudget,
+      totalBudget: parseFloat(newBudget).toFixed(2),
       people: [...dashboard.people]
     };
     dispatch(saveDashboard(saveData));
@@ -119,7 +123,7 @@ const MyModal = props => {
               name="item-cost"
               autoComplete="off"
               value={newItem.itemCost}
-              onChange={e => setNewItem({ ...newItem, itemCost: parseInt(e.target.value) })}
+              onChange={e => setNewItem({ ...newItem, itemCost: e.target.value })}
             />
             <button onClick={handleAddItem} className="btn btn-gradient">
               add

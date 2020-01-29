@@ -87,11 +87,11 @@ const Card = ({ personIndex }) => {
           </div>
           <div className="card-section">
             <h4>Spent</h4>
-            <p>{getSpendAndRemaining().spent}</p>
+            <p>{parseFloat(getSpendAndRemaining().spent).toFixed(2)}</p>
           </div>
           <div className="card-section">
             <h4>Remaining</h4>
-            <p>{getSpendAndRemaining().remaining}</p>
+            <p>{parseFloat(getSpendAndRemaining().remaining).toFixed(2)}</p>
           </div>
         </div>
         <h3 className="item-heading">Items</h3>

@@ -17,11 +17,12 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const registerData = {
-      username: username.toLowerCase(),
-      email: email.toLowerCase(),
+      username: username.toLowerCase().replace(/\s+/g, ''),
+      email: email.toLowerCase().replace(/\s+/g, ''),
       password,
       confirmPassword
     };
+
     dispatch(registerUser(registerData));
   };
 
@@ -46,6 +47,7 @@ const Register = () => {
               name="username"
               value={username}
               placeholder="username"
+              autoComplete="off"
               onChange={e => setUsername(e.target.value)}
             />
 
@@ -55,24 +57,27 @@ const Register = () => {
               name="email"
               value={email}
               placeholder="email"
+              autoComplete="off"
               onChange={e => setEmail(e.target.value)}
             />
 
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}
               placeholder="password"
+              autoComplete="off"
               onChange={e => setPassword(e.target.value)}
             />
 
             <input
-              type="text"
+              type="password"
               id="confirmPassword"
               name="confirmPassword"
               value={confirmPassword}
               placeholder="confirm password"
+              autoComplete="off"
               onChange={e => setConfirmPassword(e.target.value)}
             />
             <button type="submit" className="btn btn-gradient">

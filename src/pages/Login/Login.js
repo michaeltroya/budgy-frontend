@@ -16,7 +16,7 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const loginData = {
-      email: email.toLowerCase(),
+      email: email.toLowerCase().replace(/\s+/g, ''),
       password
     };
 
@@ -43,15 +43,17 @@ const Login = () => {
               id="email"
               name="email"
               value={email}
+              autoComplete="off"
               onChange={e => setEmail(e.target.value)}
             />
 
             <input
               placeholder="password"
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}
+              autoComplete="off"
               onChange={e => setPassword(e.target.value)}
             />
             <button type="submit" className="btn btn-gradient">

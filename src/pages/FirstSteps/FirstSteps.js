@@ -12,7 +12,7 @@ const FirstSteps = () => {
   const username = useSelector(state => state.dashboard.username);
   const dispatch = useDispatch();
 
-  const [initialBudget, setInitialBudget] = useState();
+  const [initialBudget, setInitialBudget] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,14 +29,21 @@ const FirstSteps = () => {
       <Navbar page="forms" />
       <div className="first-steps">
         {dashboard.loading === true ? (
-          <p>Loading...</p>
+          <div className="spinner-wrapper">
+            <div className="loading-spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         ) : (
           <Container>
             <div className="welcome">
               <h1>{`Welcome ${username},`}</h1>
               <h4>
-                Before you can start crunching your Christmas numbers we need to get you set up! You can
-                always change your total budget whenever you want.
+                Before you can start crunching your Christmas numbers we need to get you set up! <br />
+                You can always change your total budget whenever you want.
               </h4>
             </div>
 

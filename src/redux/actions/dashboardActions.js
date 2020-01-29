@@ -34,6 +34,7 @@ export const saveDashboard = data => dispatch => {
       dispatch(getDashboard());
     })
     .catch(err => {
+      console.log(err.response.data);
       dispatch({ type: SET_ERRORS, payload: err.response.data });
     });
 };

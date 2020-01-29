@@ -15,10 +15,11 @@ const Totals = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const getTotals = () => {
-    let totals = { totalBudget: dashboard.totalBudget, totalSpent: 0, totalRemaining: 0 };
+    let totals = { totalSpent: 0, totalRemaining: 0 };
 
     if (dashboard.people.length === 0) {
-      return totals.totalSpent;
+      totals.totalRemaining = dashboard.totalBudget;
+      return totals;
     } else {
       for (let i = 0; i < dashboard.people.length; i++) {
         let items = dashboard.people[i].items;
@@ -28,7 +29,7 @@ const Totals = () => {
       }
     }
 
-    totals.totalRemaining = totals.totalBudget - totals.totalSpent;
+    totals.totalRemaining = dashboard.totalBudget - totals.totalSpent;
 
     return totals;
   };
@@ -40,7 +41,7 @@ const Totals = () => {
           <Col xs={6}>
             <div className="card total-card">
               <h4>Total Budget</h4>
-              <p>{getTotals().totalBudget}</p>
+              <p>{dashboard.totalBudget}</p>
               <FontAwesomeIcon
                 icon={faPencilAlt}
                 className="corner-icon"
@@ -51,13 +52,13 @@ const Totals = () => {
           <Col xs={6}>
             <div className="card total-card">
               <h4>Total Spent</h4>
-              <p>{getTotals().totalSpent}</p>
+              <p>{parseFloat(getTotals().totalSpent).toFixed(2)}</p>
             </div>
           </Col>
           <Col xs={12}>
             <div className="card total-card">
               <h4>Total Remaining</h4>
-              <p>{getTotals().totalRemaining}</p>
+              <p>{parseFloat(getTotals().totalRemaining).toFixed(2)}</p>
             </div>
           </Col>
         </Row>
