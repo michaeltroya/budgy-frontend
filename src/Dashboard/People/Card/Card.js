@@ -6,6 +6,8 @@ import { saveDashboard } from '../../../redux/actions/dashboardActions';
 //component imports
 import Item from './Item/Item';
 import AddModal from '../../../components/AddModal/AddModal';
+//util imports
+import { getPeopleTotals } from '../../../util/util';
 
 const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
@@ -31,8 +33,6 @@ const Card = ({ personIndex }) => {
     dispatch(saveDashboard(saveData));
   };
 
-  //TRY TO MAKE THIS CLEANER !!!
-
   const handleSaveChanges = () => {
     const ppl = [...dashboard.people];
     ppl[personIndex].budget = parseInt(updatedBudget);
@@ -44,25 +44,7 @@ const Card = ({ personIndex }) => {
     dispatch(saveDashboard(saveData));
   };
 
-  const getSpendAndRemaining = () => {
-    let budget = person.budget;
-    let total = {
-      spent: 0,
-      remaining: 0
-    };
-
-    if (person.items.length === 0) {
-      return total;
-    } else {
-      for (let i = 0; i < person.items.length; i++) {
-        total.spent += person.items[i].itemCost;
-      }
-    }
-
-    total.remaining = budget - total.spent;
-
-    return total;
-  };
+  const { spent, remaining } = getPeopleTotals(person);
 
   return (
     <div className="card-wrapper">
@@ -88,11 +70,11 @@ const Card = ({ personIndex }) => {
           </div>
           <div className="card-section">
             <h4>Spent</h4>
-            <p>{formatCurrency(getSpendAndRemaining().spent)}</p>
+            <p>{formatCurrency(spent)}</p>
           </div>
           <div className="card-section">
             <h4>Remaining</h4>
-            <p>{formatCurrency(getSpendAndRemaining().remaining)}</p>
+            <p>{formatCurrency(remaining)}</p>
           </div>
         </div>
         <h3 className="item-heading">Items</h3>

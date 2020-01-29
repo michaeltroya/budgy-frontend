@@ -35,3 +35,45 @@ export const tokenAndFirstLogin = () => {
     store.dispatch({ type: SET_FIRST_LOGIN });
   }
 };
+
+//GET TOTALS
+export const getTotals = dashboard => {
+  let totals = { totalSpent: 0, totalRemaining: 0 };
+
+  if (dashboard.people.length === 0) {
+    totals.totalRemaining = dashboard.totalBudget;
+    return totals;
+  } else {
+    for (let i = 0; i < dashboard.people.length; i++) {
+      let items = dashboard.people[i].items;
+      for (let j = 0; j < items.length; j++) {
+        totals.totalSpent += dashboard.people[i].items[j].itemCost;
+      }
+    }
+  }
+
+  totals.totalRemaining = dashboard.totalBudget - totals.totalSpent;
+
+  return totals;
+};
+
+// GET TOTALS IN CARDS FOR INDIVIDUAL PPL
+export const getPeopleTotals = person => {
+  let budget = person.budget;
+  let totals = {
+    spent: 0,
+    remaining: 0
+  };
+
+  if (person.items.length === 0) {
+    return totals;
+  } else {
+    for (let i = 0; i < person.items.length; i++) {
+      totals.spent += person.items[i].itemCost;
+    }
+  }
+
+  totals.remaining = budget - totals.spent;
+
+  return totals;
+};

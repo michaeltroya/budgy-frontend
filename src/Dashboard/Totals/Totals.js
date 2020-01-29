@@ -9,31 +9,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 //component imports
 import AddModal from '../../components/AddModal/AddModal';
+//util imports
+import { getTotals } from '../../util/util';
 
 const Totals = () => {
   const dashboard = useSelector(state => state.dashboard);
 
   const [modalShow, setModalShow] = useState(false);
 
-  const getTotals = () => {
-    let totals = { totalSpent: 0, totalRemaining: 0 };
-
-    if (dashboard.people.length === 0) {
-      totals.totalRemaining = dashboard.totalBudget;
-      return totals;
-    } else {
-      for (let i = 0; i < dashboard.people.length; i++) {
-        let items = dashboard.people[i].items;
-        for (let j = 0; j < items.length; j++) {
-          totals.totalSpent += dashboard.people[i].items[j].itemCost;
-        }
-      }
-    }
-
-    totals.totalRemaining = dashboard.totalBudget - totals.totalSpent;
-
-    return totals;
-  };
+  const { totalSpent, totalRemaining } = getTotals(dashboard);
 
   return (
     <div className="dashboard-totals">
@@ -53,13 +37,13 @@ const Totals = () => {
           <Col xs={6}>
             <div className="card total-card">
               <h4>Total Spent</h4>
-              <p>{formatCurrency(getTotals().totalSpent)}</p>
+              <p>{formatCurrency(totalSpent)}</p>
             </div>
           </Col>
           <Col xs={12}>
             <div className="card total-card">
               <h4>Total Remaining</h4>
-              <p>{formatCurrency(getTotals().totalRemaining)}</p>
+              <p>{formatCurrency(totalRemaining)}</p>
             </div>
           </Col>
         </Row>
