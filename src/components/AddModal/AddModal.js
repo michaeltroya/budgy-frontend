@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../redux/actions/dashboardActions';
 //bs imports
 import { Modal, Button } from 'react-bootstrap';
+//util import
+import formatInput from '../../util/formatInput';
 
 const MyModal = props => {
   const dashboard = useSelector(state => state.dashboard);
@@ -18,7 +20,7 @@ const MyModal = props => {
   });
 
   const handleAddPerson = () => {
-    const formattedPerson = { ...newPerson, budget: parseFloat(newPerson.budget).toFixed(2) };
+    const formattedPerson = { ...newPerson, budget: formatInput(newPerson.budget) };
 
     const saveData = {
       totalBudget: dashboard.totalBudget,
@@ -36,7 +38,7 @@ const MyModal = props => {
   });
 
   const handleAddItem = () => {
-    const formattedItem = { ...newItem, itemCost: parseFloat(newItem.itemCost).toFixed(2) };
+    const formattedItem = { ...newItem, itemCost: formatInput(newItem.itemCost) };
 
     const ppl = [...dashboard.people];
     ppl[props.personindex].items.push(formattedItem);
@@ -55,7 +57,7 @@ const MyModal = props => {
 
   const handleSaveBudget = () => {
     const saveData = {
-      totalBudget: parseFloat(newBudget).toFixed(2),
+      totalBudget: formatInput(newBudget),
       people: [...dashboard.people]
     };
     dispatch(saveDashboard(saveData));
