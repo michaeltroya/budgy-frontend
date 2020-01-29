@@ -5,7 +5,7 @@ import { saveDashboard } from '../../redux/actions/dashboardActions';
 //bs imports
 import { Modal, Button } from 'react-bootstrap';
 //util import
-import formatInput from '../../util/formatInput';
+import { formatInput } from '../../util/util';
 
 const MyModal = props => {
   const dashboard = useSelector(state => state.dashboard);

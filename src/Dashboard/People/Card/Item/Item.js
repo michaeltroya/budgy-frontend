@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatCurrency } from '@wangcch/format-currency';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../../../redux/actions/dashboardActions';
@@ -31,7 +32,7 @@ const Item = ({ personIndex, itemIndex, editingMode }) => {
     <div className="item">
       <h4 className="item-name">{item.itemName}</h4>
       <div className="item-right-side">
-        <p className="item-cost">{item.itemCost}</p>
+        <p className="item-cost">{formatCurrency(item.itemCost)}</p>
         {editingMode === true ? (
           <FontAwesomeIcon icon={faMinusCircle} className="corner-icon" onClick={handleDeleteItem} />
         ) : null}

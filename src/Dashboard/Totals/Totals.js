@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formatCurrency } from '@wangcch/format-currency';
 //Redux Imports
 import { useSelector } from 'react-redux';
 //bs imports
@@ -41,7 +42,7 @@ const Totals = () => {
           <Col xs={6}>
             <div className="card total-card">
               <h4>Total Budget</h4>
-              <p>{dashboard.totalBudget}</p>
+              <p>{formatCurrency(dashboard.totalBudget)}</p>
               <FontAwesomeIcon
                 icon={faPencilAlt}
                 className="corner-icon"
@@ -52,13 +53,13 @@ const Totals = () => {
           <Col xs={6}>
             <div className="card total-card">
               <h4>Total Spent</h4>
-              <p>{parseFloat(getTotals().totalSpent).toFixed(2)}</p>
+              <p>{formatCurrency(getTotals().totalSpent)}</p>
             </div>
           </Col>
           <Col xs={12}>
             <div className="card total-card">
               <h4>Total Remaining</h4>
-              <p>{parseFloat(getTotals().totalRemaining).toFixed(2)}</p>
+              <p>{formatCurrency(getTotals().totalRemaining)}</p>
             </div>
           </Col>
         </Row>

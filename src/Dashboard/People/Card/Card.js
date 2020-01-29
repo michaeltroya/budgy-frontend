@@ -1,8 +1,9 @@
 import React, { useState, Fragment } from 'react';
+import { formatCurrency } from '@wangcch/format-currency';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../../redux/actions/dashboardActions';
-
+//component imports
 import Item from './Item/Item';
 import AddModal from '../../../components/AddModal/AddModal';
 
@@ -82,16 +83,16 @@ const Card = ({ personIndex }) => {
                 onChange={e => setUpdatedBudget(e.target.value)}
               />
             ) : (
-              <p>{person.budget}</p>
+              <p>{formatCurrency(person.budget)}</p>
             )}
           </div>
           <div className="card-section">
             <h4>Spent</h4>
-            <p>{parseFloat(getSpendAndRemaining().spent).toFixed(2)}</p>
+            <p>{formatCurrency(getSpendAndRemaining().spent)}</p>
           </div>
           <div className="card-section">
             <h4>Remaining</h4>
-            <p>{parseFloat(getSpendAndRemaining().remaining).toFixed(2)}</p>
+            <p>{formatCurrency(getSpendAndRemaining().remaining)}</p>
           </div>
         </div>
         <h3 className="item-heading">Items</h3>
