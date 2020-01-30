@@ -86,7 +86,7 @@ const Card = ({ personIndex }) => {
               personIndex={personIndex}
               itemIndex={itemIndex}
               editingMode={editingMode}
-              key={Math.random(0)}
+              key={`${personIndex}-${itemIndex}`}
             />
           ))}
         </div>
@@ -118,7 +118,7 @@ const Card = ({ personIndex }) => {
           )}
         </div>
       </div>
-      <AddModal show={modalShow} onHide={() => setModalShow(false)} type="item" personindex={personIndex} />
+      <AddModal show={modalShow} onHide={() => setModalShow(false)} type="item" personIndex={personIndex} />
     </div>
   );
 };

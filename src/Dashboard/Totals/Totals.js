@@ -48,12 +48,7 @@ const Totals = () => {
           </Col>
         </Row>
       </Container>
-      <AddModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        onShow={() => setModalShow(true)}
-        type="totals"
-      />
+      <AddModal show={modalShow} onHide={() => setModalShow(false)} type="totals" />
     </div>
   );
 };

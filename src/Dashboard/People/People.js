@@ -18,7 +18,7 @@ function People() {
     <div className="dashboard-people">
       <Container fluid className="card-container">
         {dashboard.people.map((_, personIndex) => (
-          <PeopleCard personIndex={personIndex} key={Math.random(0)} />
+          <PeopleCard personIndex={personIndex} key={personIndex} />
         ))}
         <div className="card-wrapper">
           <div className="add-person" onClick={() => setModalShow(true)}>

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../redux/actions/dashboardActions';
@@ -7,7 +7,7 @@ import { Modal, Button } from 'react-bootstrap';
 //util import
 import { formatInput } from '../../util/util';
 
-const MyModal = props => {
+const MyModal = ({ type, personIndex, hasErrors, ...rest }) => {
   const dashboard = useSelector(state => state.dashboard);
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const MyModal = props => {
     name: ''
   });
 
-  const handleAddPerson = () => {
+  const handleAddPerson = e => {
     const formattedPerson = { ...newPerson, budget: formatInput(newPerson.budget) };
 
     const saveData = {
@@ -27,6 +27,7 @@ const MyModal = props => {
       people: [...dashboard.people, formattedPerson]
     };
     dispatch(saveDashboard(saveData));
+    e.preventDefault();
   };
 
   //NEW ITEM
@@ -36,17 +37,17 @@ const MyModal = props => {
     itemName: ''
   });
 
-  const handleAddItem = () => {
+  const handleAddItem = e => {
+    e.preventDefault();
     const formattedItem = { ...newItem, itemCost: formatInput(newItem.itemCost) };
 
     const ppl = JSON.parse(JSON.stringify(dashboard.people));
-    ppl[props.personindex].items.push(formattedItem);
+    ppl[personIndex].items.push(formattedItem);
 
     const saveData = {
       totalBudget: dashboard.totalBudget,
       people: [...ppl]
     };
-
     dispatch(saveDashboard(saveData));
   };
 
@@ -54,20 +55,20 @@ const MyModal = props => {
 
   const [newBudget, setNewBudget] = useState('');
 
-  const handleSaveBudget = () => {
+  const handleSaveBudget = e => {
     const saveData = {
       totalBudget: formatInput(newBudget),
       people: [...dashboard.people]
     };
     dispatch(saveDashboard(saveData));
-    props.onHide();
+    e.preventDefault();
   };
 
   return (
-    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...rest} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Body className="add-modal">
-        {props.type === 'person' ? (
-          <Fragment>
+        {type === 'person' ? (
+          <form className="form" onSubmit={handleAddPerson}>
             <h1>Name</h1>
             <input
               type="text"
@@ -86,13 +87,12 @@ const MyModal = props => {
               value={newPerson.budget}
               onChange={e => setNewPerson({ ...newPerson, budget: e.target.value })}
             />
-
-            <button onClick={handleAddPerson} className="btn btn-gradient">
-              add
+            <button type="submit" className="btn btn-gradient">
+              Add
             </button>
-          </Fragment>
-        ) : props.type === 'totals' ? (
-          <Fragment>
+          </form>
+        ) : type === 'totals' ? (
+          <form className="form" onSubmit={handleSaveBudget}>
             <h1>New Budget</h1>
             <input
               type="text"
@@ -102,12 +102,12 @@ const MyModal = props => {
               autoComplete="off"
               onChange={e => setNewBudget(e.target.value)}
             />
-            <button onClick={handleSaveBudget} className="btn btn-gradient">
+            <button type="submit" className="btn btn-gradient">
               Save
             </button>
-          </Fragment>
+          </form>
         ) : (
-          <Fragment>
+          <form className="form" onSubmit={handleAddItem}>
             <h1>Item Name</h1>
             <input
               type="text"
@@ -126,14 +126,14 @@ const MyModal = props => {
               value={newItem.itemCost}
               onChange={e => setNewItem({ ...newItem, itemCost: e.target.value })}
             />
-            <button onClick={handleAddItem} className="btn btn-gradient">
-              add
+            <button type="submit" className="btn btn-gradient">
+              Add
             </button>
-          </Fragment>
+          </form>
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={rest.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );
