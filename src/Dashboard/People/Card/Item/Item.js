@@ -17,7 +17,7 @@ const Item = ({ personIndex, itemIndex, editingMode }) => {
 
   const handleDeleteItem = () => {
     setUpdatedItems(updatedItems.splice(itemIndex, 1));
-    const ppl = [...dashboard.people];
+    const ppl = JSON.parse(JSON.stringify(dashboard.people));
     ppl[personIndex].items = [...updatedItems];
 
     const saveData = {

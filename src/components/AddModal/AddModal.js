@@ -39,7 +39,7 @@ const MyModal = props => {
   const handleAddItem = () => {
     const formattedItem = { ...newItem, itemCost: formatInput(newItem.itemCost) };
 
-    const ppl = [...dashboard.people];
+    const ppl = JSON.parse(JSON.stringify(dashboard.people));
     ppl[props.personindex].items.push(formattedItem);
 
     const saveData = {
