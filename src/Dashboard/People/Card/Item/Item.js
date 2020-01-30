@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { formatCurrency } from '@wangcch/format-currency';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';

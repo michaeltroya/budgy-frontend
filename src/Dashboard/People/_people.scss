@@ -7,7 +7,7 @@
   white-space: nowrap;
   overflow-x: auto;
   background-color: #00000026;
-  height: 50%;
+  min-height: 600px;
 
   &::-webkit-scrollbar {
     height: 0.7rem;

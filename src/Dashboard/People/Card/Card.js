@@ -31,8 +31,7 @@ const Card = ({ personIndex }) => {
   const [editingMode, setEditingMode] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
-  // UPDATING VARIABLES IN EDITING MODE
-  const [updatedPeople, setUpdatedPeople] = useState([...dashboard.people]);
+  // UPDATING BUGDET IN EDITING MODE
   const [updatedBudget, setUpdatedBudget] = useState(person.budget);
 
   const handleDelete = () => {
@@ -75,6 +74,7 @@ const Card = ({ personIndex }) => {
                 id="email"
                 name="email"
                 autoComplete="off"
+                maxLength="7"
                 value={updatedBudget}
                 onChange={e => setUpdatedBudget(e.target.value)}
               />

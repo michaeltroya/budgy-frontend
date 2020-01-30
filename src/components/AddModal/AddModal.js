@@ -96,6 +96,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
               name="name"
               value={newPerson.name}
               autoComplete="off"
+              maxLength="20"
               onChange={e => setNewPerson({ ...newPerson, name: e.target.value })}
             />
             <h1>Budget</h1>
@@ -104,6 +105,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
               id="budget"
               name="budget"
               autoComplete="off"
+              maxLength="7"
               value={newPerson.budget}
               onChange={e => setNewPerson({ ...newPerson, budget: e.target.value })}
             />
@@ -124,6 +126,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
               id="name"
               name="name"
               value={newBudget}
+              maxLength="7"
               autoComplete="off"
               onChange={e => setNewBudget(e.target.value)}
             />
@@ -146,6 +149,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
               name="item-name"
               value={newItem.itemName}
               autoComplete="off"
+              maxLength="20"
               onChange={e => setNewItem({ ...newItem, itemName: e.target.value })}
             />
             <h1>Item Cost</h1>
@@ -154,6 +158,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
               id="item-cost"
               name="item-cost"
               autoComplete="off"
+              maxLength="7"
               value={newItem.itemCost}
               onChange={e => setNewItem({ ...newItem, itemCost: e.target.value })}
             />
