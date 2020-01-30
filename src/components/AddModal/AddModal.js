@@ -27,7 +27,6 @@ const MyModal = props => {
       people: [...dashboard.people, formattedPerson]
     };
     dispatch(saveDashboard(saveData));
-    props.onHide();
   };
 
   //NEW ITEM
@@ -47,8 +46,8 @@ const MyModal = props => {
       totalBudget: dashboard.totalBudget,
       people: [...ppl]
     };
+
     dispatch(saveDashboard(saveData));
-    props.onHide();
   };
 
   //EDIT BUDGET
@@ -114,7 +113,7 @@ const MyModal = props => {
               type="text"
               id="item-name"
               name="item-name"
-              value={newItem.name}
+              value={newItem.itemName}
               autoComplete="off"
               onChange={e => setNewItem({ ...newItem, itemName: e.target.value })}
             />

@@ -9,6 +9,8 @@ import AddModal from '../../../components/AddModal/AddModal';
 //util imports
 import { getPeopleTotals } from '../../../util/util';
 
+import { formatInput } from '../../../util/util';
+
 const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
 
@@ -35,7 +37,7 @@ const Card = ({ personIndex }) => {
 
   const handleSaveChanges = () => {
     const ppl = [...dashboard.people];
-    ppl[personIndex].budget = parseInt(updatedBudget);
+    ppl[personIndex].budget = formatInput(updatedBudget);
     setUpdatedPeople([...ppl]);
     const saveData = {
       totalBudget: dashboard.totalBudget,
