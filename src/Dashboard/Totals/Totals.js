@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { formatCurrency } from '@wangcch/format-currency';
 //Redux Imports
 import { useSelector } from 'react-redux';
@@ -11,13 +11,21 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import AddModal from '../../components/AddModal/AddModal';
 //util imports
 import { getTotals } from '../../util/util';
-
 const Totals = () => {
   const dashboard = useSelector(state => state.dashboard);
+  const errors = useSelector(state => state.UI.errors);
 
   const [modalShow, setModalShow] = useState(false);
 
   const { totalSpent, totalRemaining } = getTotals(dashboard);
+
+  useEffect(() => {
+    if (errors.totalBudget === undefined) {
+      return setModalShow(false);
+    } else {
+      return setModalShow(true);
+    }
+  }, [errors]);
 
   return (
     <div className="dashboard-totals">

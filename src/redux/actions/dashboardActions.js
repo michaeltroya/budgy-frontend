@@ -24,6 +24,7 @@ export const saveDashboard = data => dispatch => {
       dispatch({ type: UNSET_FIRST_LOGIN });
       localStorage.removeItem('firstLogin');
       dispatch(getDashboard());
+      dispatch(clearErrors());
     })
     .catch(err => {
       console.log(err.response.data);

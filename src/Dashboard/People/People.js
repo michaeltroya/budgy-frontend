@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //component imports
 import PeopleCard from './Card/Card';
 import AddModal from '../../components/AddModal/AddModal';
@@ -13,6 +13,15 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 function People() {
   const dashboard = useSelector(state => state.dashboard);
   const [modalShow, setModalShow] = useState(false);
+  const errors = useSelector(state => state.UI.errors);
+
+  useEffect(() => {
+    if (errors.peopleName === undefined || errors.peopleBudget === undefined) {
+      return setModalShow(false);
+    } else {
+      return setModalShow(true);
+    }
+  }, [errors]);
 
   return (
     <div className="dashboard-people">

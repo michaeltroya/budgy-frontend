@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { formatCurrency } from '@wangcch/format-currency';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +13,15 @@ import { formatInput } from '../../../util/util';
 
 const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
+  const errors = useSelector(state => state.UI.errors);
+
+  useEffect(() => {
+    if (errors.itemName === undefined || errors.itemCost === undefined) {
+      return setModalShow(false);
+    } else {
+      return setModalShow(true);
+    }
+  }, [errors]);
 
   //GET REDUX STATES
   const dashboard = useSelector(state => state.dashboard);
@@ -27,23 +36,26 @@ const Card = ({ personIndex }) => {
   const [updatedBudget, setUpdatedBudget] = useState(person.budget);
 
   const handleDelete = () => {
-    setUpdatedPeople(updatedPeople.splice(personIndex, 1));
+    const ppl = JSON.parse(JSON.stringify(dashboard.people));
+    ppl.splice(personIndex, 1);
+
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      people: [...updatedPeople]
+      people: [...ppl]
     };
     dispatch(saveDashboard(saveData));
   };
 
   const handleSaveChanges = () => {
-    const ppl = [...dashboard.people];
+    const ppl = JSON.parse(JSON.stringify(dashboard.people));
     ppl[personIndex].budget = formatInput(updatedBudget);
-    setUpdatedPeople([...ppl]);
+
     const saveData = {
       totalBudget: dashboard.totalBudget,
-      people: [...updatedPeople]
+      people: [...ppl]
     };
     dispatch(saveDashboard(saveData));
+    setEditingMode(false);
   };
 
   const { spent, remaining } = getPeopleTotals(person);

@@ -10,7 +10,7 @@ import { getDashboard } from '../redux/actions/dashboardActions';
 
 //FORMATING INPUT NUMBERS
 export const formatInput = number => {
-  const formatted = parseFloat(number.replace(/,/g, '')).toFixed(2);
+  const formatted = parseFloat(number.toString().replace(/,/g, '')).toFixed(2);
   return formatted;
 };
 

@@ -13,12 +13,9 @@ const Item = ({ personIndex, itemIndex, editingMode }) => {
   const dashboard = useSelector(state => state.dashboard);
   const item = useSelector(state => state.dashboard.people[personIndex].items[itemIndex]);
 
-  const [updatedItems, setUpdatedItems] = useState([...dashboard.people[personIndex].items]);
-
   const handleDeleteItem = () => {
-    setUpdatedItems(updatedItems.splice(itemIndex, 1));
     const ppl = JSON.parse(JSON.stringify(dashboard.people));
-    ppl[personIndex].items = [...updatedItems];
+    ppl[personIndex].items.splice(itemIndex, 1);
 
     const saveData = {
       totalBudget: dashboard.totalBudget,
