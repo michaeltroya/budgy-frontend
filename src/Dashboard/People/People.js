@@ -16,10 +16,8 @@ function People() {
   const errors = useSelector(state => state.UI.errors);
 
   useEffect(() => {
-    if (errors.peopleName === undefined || errors.peopleBudget === undefined) {
-      return setModalShow(false);
-    } else {
-      return setModalShow(true);
+    if (errors.peopleName === undefined && errors.peopleBudget === undefined) {
+      setModalShow(false);
     }
   }, [errors]);
 

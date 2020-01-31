@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDashboard } from '../../redux/actions/dashboardActions';
@@ -12,13 +12,41 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
   const dashboard = useSelector(state => state.dashboard);
   const dispatch = useDispatch();
 
-  //NEW PERSON
+  const [newBudget, setNewBudget] = useState('');
 
   const [newPerson, setNewPerson] = useState({
     budget: '',
     items: [],
     name: ''
   });
+
+  const [newItem, setNewItem] = useState({
+    itemCost: '',
+    itemName: ''
+  });
+
+  //USE EFFECTS TO CHECK FOR ERRORS
+
+  useEffect(() => {
+    if (errors.peopleName === undefined && errors.peopleBudget === undefined) {
+      setNewPerson({
+        budget: '',
+        items: [],
+        name: ''
+      });
+    }
+  }, [errors]);
+
+  useEffect(() => {
+    if (errors.itemName === undefined && errors.itemCost === undefined) {
+      setNewItem({
+        itemCost: '',
+        itemName: ''
+      });
+    }
+  }, [errors]);
+
+  //NEW PERSON
 
   const handleAddPerson = e => {
     e.preventDefault();
@@ -30,19 +58,9 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
     };
 
     dispatch(saveDashboard(saveData));
-    setNewPerson({
-      budget: '',
-      items: [],
-      name: ''
-    });
   };
 
   //NEW ITEM
-
-  const [newItem, setNewItem] = useState({
-    itemCost: '',
-    itemName: ''
-  });
 
   const handleAddItem = e => {
     e.preventDefault();
@@ -57,15 +75,9 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
     };
 
     dispatch(saveDashboard(saveData));
-    setNewItem({
-      itemCost: '',
-      itemName: ''
-    });
   };
 
   //EDIT BUDGET
-
-  const [newBudget, setNewBudget] = useState('');
 
   const handleSaveBudget = e => {
     e.preventDefault();

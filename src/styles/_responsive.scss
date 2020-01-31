@@ -31,8 +31,17 @@
   .question {
     font-size: 1.2rem;
   }
+
+  .warning {
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
 }
 @include media-breakpoint-up(md) {
+  .dashboard-people {
+    min-height: 600px;
+  }
 }
 @include media-breakpoint-up(lg) {
   //HOMEPAGE

@@ -27,7 +27,6 @@ export const saveDashboard = data => dispatch => {
       dispatch(clearErrors());
     })
     .catch(err => {
-      console.log(err.response.data);
       dispatch({ type: SET_ERRORS, payload: err.response.data });
     });
 };

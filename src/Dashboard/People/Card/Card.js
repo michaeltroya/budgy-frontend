@@ -13,26 +13,23 @@ import { formatInput } from '../../../util/util';
 
 const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
-  const errors = useSelector(state => state.UI.errors);
-
-  useEffect(() => {
-    if (errors.itemName === undefined || errors.itemCost === undefined) {
-      return setModalShow(false);
-    } else {
-      return setModalShow(true);
-    }
-  }, [errors]);
 
   //GET REDUX STATES
   const dashboard = useSelector(state => state.dashboard);
   const person = useSelector(state => state.dashboard.people[personIndex]);
+  const errors = useSelector(state => state.UI.errors);
 
   //EDITING MODE & MODAL STATE
   const [editingMode, setEditingMode] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-
   // UPDATING BUGDET IN EDITING MODE
   const [updatedBudget, setUpdatedBudget] = useState(person.budget);
+
+  useEffect(() => {
+    if (errors.itemName === undefined && errors.itemCost === undefined) {
+      setModalShow(false);
+    }
+  }, [errors]);
 
   const handleDelete = () => {
     const ppl = JSON.parse(JSON.stringify(dashboard.people));
