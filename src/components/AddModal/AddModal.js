@@ -46,7 +46,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
     }
   }, [errors]);
 
-  //NEW PERSON
+  //ADD NEW PERSON
 
   const handleAddPerson = e => {
     e.preventDefault();
@@ -60,7 +60,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
     dispatch(saveDashboard(saveData));
   };
 
-  //NEW ITEM
+  //ADD NEW ITEM
 
   const handleAddItem = e => {
     e.preventDefault();
@@ -77,7 +77,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
     dispatch(saveDashboard(saveData));
   };
 
-  //EDIT BUDGET
+  //EDIT  BUDGET
 
   const handleSaveBudget = e => {
     e.preventDefault();
@@ -113,7 +113,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
             />
             <h1>Budget</h1>
             <input
-              type="text"
+              type="number"
               id="budget"
               name="budget"
               autoComplete="off"
@@ -134,9 +134,9 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
             ) : null}
             <h1>New Budget</h1>
             <input
-              type="text"
-              id="name"
-              name="name"
+              type="number"
+              id="new-budget"
+              name="new-bugdet"
               value={newBudget}
               maxLength="7"
               autoComplete="off"
@@ -166,7 +166,7 @@ const MyModal = ({ type, personIndex, open, ...rest }) => {
             />
             <h1>Item Cost</h1>
             <input
-              type="text"
+              type="number"
               id="item-cost"
               name="item-cost"
               autoComplete="off"

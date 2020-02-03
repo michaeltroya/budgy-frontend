@@ -14,7 +14,7 @@ import { formatInput } from '../../../util/util';
 const Card = ({ personIndex }) => {
   const dispatch = useDispatch();
 
-  //GET REDUX STATES
+  //GET REDUX STATE VARS
   const dashboard = useSelector(state => state.dashboard);
   const person = useSelector(state => state.dashboard.people[personIndex]);
   const errors = useSelector(state => state.UI.errors);
@@ -31,6 +31,8 @@ const Card = ({ personIndex }) => {
     }
   }, [errors]);
 
+  // HANDLE DELETING PEOPLE
+
   const handleDelete = () => {
     const ppl = JSON.parse(JSON.stringify(dashboard.people));
     ppl.splice(personIndex, 1);
@@ -41,6 +43,8 @@ const Card = ({ personIndex }) => {
     };
     dispatch(saveDashboard(saveData));
   };
+
+  //HANDLE UPDATING BUDGETS
 
   const handleSaveChanges = () => {
     const ppl = JSON.parse(JSON.stringify(dashboard.people));
