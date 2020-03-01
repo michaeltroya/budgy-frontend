@@ -13,6 +13,7 @@ export const loginUser = userData => dispatch => {
   axios
     .post('/auth/login', userData)
     .then(res => {
+      localStorage.setItem('firstLogin', false);
       setAuthHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
