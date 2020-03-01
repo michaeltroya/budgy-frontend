@@ -24,11 +24,11 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/first-steps" component={FirstSteps} />
+          <AuthRoute exact path="/" component={Home} />
+          <AuthRoute path="/dashboard" component={Dashboard} />
+          <AuthRoute path="/login" component={Login} />
+          <AuthRoute path="/register" component={Register} />
+          <AuthRoute path="/first-steps" component={FirstSteps} />
           <Route component={FourOhFour} />
         </Switch>
       </Router>
