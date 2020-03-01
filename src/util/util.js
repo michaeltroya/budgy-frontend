@@ -24,14 +24,13 @@ export const tokenAndFirstLogin = () => {
     if (decodeToken.exp * 1000 < Date.now()) {
       store.dispatch(logoutUser());
       window.location.href = '/login';
-    } else {
-      store.dispatch({ type: SET_AUTHENTICATED });
-      axios.defaults.headers.common['Authorization'] = `${token}`;
-      store.dispatch(getDashboard());
     }
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common['Authorization'] = `${token}`;
+    store.dispatch(getDashboard());
   }
 
-  if (firstLogin) {
+  if (firstLogin === true) {
     store.dispatch({ type: SET_FIRST_LOGIN });
   }
 };
