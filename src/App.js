@@ -11,10 +11,13 @@ import FirstSteps from './pages/FirstSteps/FirstSteps';
 //Redux imports
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { tokenAndFirstLogin } from './util/util';
 
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://budgy-api.herokuapp.com/api';
+
+tokenAndFirstLogin();
 
 const App = () => {
   return (
